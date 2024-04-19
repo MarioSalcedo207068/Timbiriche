@@ -12,9 +12,6 @@
         <exec.mainClass>com.mycompany.modelo.Modelo</exec.mainClass>
     </properties>
     <dependencies> 
-        <dependency> 
-            
-        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Dominio</artifactId>
