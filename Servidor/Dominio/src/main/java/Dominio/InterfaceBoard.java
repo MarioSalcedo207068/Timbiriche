@@ -9,7 +9,7 @@ package Dominio;
  * @author salce
  */
 public interface InterfaceBoard {
-    Line addLine();
+    /*Line addLine();
     Box addBox();
-    Dot addDot();
+    Dot addDot();*/
 }

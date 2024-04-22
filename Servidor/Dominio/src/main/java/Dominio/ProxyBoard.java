@@ -8,7 +8,7 @@ package Dominio;
  *
  * @author salce
  */
-public class ProxyBoard implements InterfaceBoard{
+public class ProxyBoard /*implements InterfaceBoard*/{
 
     private Board board;
 
@@ -16,7 +16,7 @@ public class ProxyBoard implements InterfaceBoard{
     }
     
     
-    @Override
+    /*@Override
     public Line addLine() {
         if (board == null) {
             board = new Board();
@@ -38,6 +38,6 @@ public class ProxyBoard implements InterfaceBoard{
             board=new Board();
         }
         return board.addDot();
-    }
+    }*/
     
 }

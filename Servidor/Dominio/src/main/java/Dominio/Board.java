@@ -8,29 +8,42 @@ package Dominio;
  *
  * @author salce
  */
-public class Board implements InterfaceBoard{
+public class Board {
     private int Height;
     private int Width;
     private int NumberOfDots;
 
-    @Override
-    public Line addLine() {
-        
-        return new Line();
-        
+    public Board() {
     }
 
-    public Box addBox() {
-        
-        return new Box();
-        
+    public Board(int Height, int Width, int NumberOfDots) {
+        this.Height = Height;
+        this.Width = Width;
+        this.NumberOfDots = NumberOfDots;
     }
 
-    @Override
-    public Dot addDot() {
-        
-        return new Dot();
-        
+    public int getNumberOfDots() {
+        return NumberOfDots;
+    }
+
+    public void setNumberOfDots(int NumberOfDots) {
+        this.NumberOfDots = NumberOfDots;
+    }
+
+    public int getHeight() {
+        return Height;
+    }
+
+    public void setHeight(int Height) {
+        this.Height = Height;
+    }
+
+    public int getWidth() {
+        return Width;
+    }
+
+    public void setWidth(int Width) {
+        this.Width = Width;
     }
     
 }
