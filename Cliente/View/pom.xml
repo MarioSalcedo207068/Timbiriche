@@ -11,4 +11,14 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>com.mycompany.view.View</exec.mainClass>
     </properties>
+    
+    <dependencies> 
+    
+            <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.20.0</version>
+        </dependency>
+        
+    </dependencies>
 </project>
