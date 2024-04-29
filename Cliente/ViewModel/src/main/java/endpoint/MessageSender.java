@@ -8,17 +8,20 @@ import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author salce
  */
-public class MensajeSender {
+public class MessageSender {
 
-    private final static String EXCHANGE_NAME = "chat_exchange";
-    private final static String ROUTING_KEY = "chat_key";
+    private final static String EXCHANGE_NAME = "exchange-timbiriche";
+    private final static String ROUTING_KEY = "model";
 
-    public static void main(String[] argv) throws Exception {
+    public void enviarMensaje(String mensaje) {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         factory.setUsername("root");
@@ -26,9 +29,12 @@ public class MensajeSender {
 
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
-            String message = "Hola desde Java invntario";
-            channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes());
-            System.out.println(" [x] Enviado desde API Gateway: '" + message + "'");
+            channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, mensaje.getBytes());
+            System.out.println(" [x] Enviado desde API Gateway: '" + mensaje + "'");
+        } catch (IOException ex) {
+            Logger.getLogger(MessageSender.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TimeoutException ex) {
+            Logger.getLogger(MessageSender.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
