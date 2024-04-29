@@ -4,6 +4,8 @@
 
 package com.mycompany.modelo;
 
+import endpoint.MessageReceiver;
+
 /**
  *
  * @author salce
@@ -11,6 +13,11 @@ package com.mycompany.modelo;
 public class Modelo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+    
+        System.out.println("Iniciando servidor");
+
+        MessageReceiver mensajeReceiver = new MessageReceiver();
+
+        mensajeReceiver.iniciarConsumidor();
     }
 }

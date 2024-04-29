@@ -4,6 +4,9 @@
 
 package com.mycompany.viewmodel;
 
+import ViewModel.viewModel_PantallaRegistro;
+import endpoint.MessageReceiver;
+
 /**
  *
  * @author salce
@@ -11,6 +14,10 @@ package com.mycompany.viewmodel;
 public class ViewModel {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Iniciando jugador");
+        MessageReceiver mensajeReceiver = new MessageReceiver();
+        new viewModel_PantallaRegistro().inciarPantalla();
+        
+        mensajeReceiver.iniciarCOnsumidor();
     }
 }
