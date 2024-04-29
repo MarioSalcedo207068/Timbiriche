@@ -4,26 +4,44 @@
  */
 package ViewModel;
 
+import Dominio.Mensaje;
+import Dominio.Player;
 import View.Registro;
+import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author salce
  */
-public class viewModel_PantallaRegistro implements ActionListener{
+public class viewModel_PantallaRegistro implements ActionListener {
 
-        private Registro pantallaRegistro;
+    private Registro pantallaRegistro;
+    private Gestor gestor;
 
-    
-        public void inciarPantalla() {
-            pantallaRegistro.setVisible(true);
-        }
-    
+    public viewModel_PantallaRegistro() {
+        this.pantallaRegistro = new Registro();
+        this.gestor = new Gestor();
+        this.pantallaRegistro.btnRegistrar.addActionListener(this);
+
+    }
+
+    public void inciarPantalla() {
+        pantallaRegistro.setVisible(true);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == pantallaRegistro.btnRegistrar) {
+            String nombreJugador = pantallaRegistro.txtUserName.getText();
+            Player player = new Player(nombreJugador);
+            gestor.agregarJugador(player);
+            
+            if (nombreJugador.equals("")) {
+                JOptionPane.showMessageDialog(null, "El nickname del jugador está vacío");
+            }
+        }
     }
-    
 }
