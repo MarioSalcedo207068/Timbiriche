@@ -6,6 +6,7 @@ package GestorJugador;
 
 import Dominio.Player;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.Icon;
 
 /**
@@ -14,12 +15,13 @@ import javax.swing.Icon;
  */
 public interface IGestorCuenta 
 {
-    public Player buildPlayer(String name, Color color, String pathImage);
+    public Player buildPlayer(String name, String color, String pathImage);
     public Player modifyName(Player player, String name);
-    public Player modifyColor(Player player, Color color);
+    public Player modifyColor(Player player, String color);
     public Player modifyImage(Player player, String pathImage);
     public Player addToScore(Player player, int scoreToAdd);
     public Icon getPlayerIcon(Player player);
-
+    public void addPlayer(Player player);
+    public List<Player> getListPlayer();
     
 }

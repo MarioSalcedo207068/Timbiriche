@@ -3,15 +3,18 @@ package GestorJugador;
 
 import Dominio.Player;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Icon;
 
 
 
-public class GestorCuenta implements IGestorCuenta
-{
+public class GestorCuenta implements IGestorCuenta {
+    
+        List<Player> jugadores = new ArrayList<>();
     
     @Override
-    public Player buildPlayer(String name, Color color, String pathImage)
+    public Player buildPlayer(String name, String color, String pathImage)
     {
         
         Player player = new Player( name,  color,  pathImage, 0);
@@ -27,7 +30,7 @@ public class GestorCuenta implements IGestorCuenta
     }
     
     @Override
-    public Player modifyColor(Player player, Color color)
+    public Player modifyColor(Player player, String color)
     {
         player.setColor(color);
         return player;
@@ -53,6 +56,16 @@ public class GestorCuenta implements IGestorCuenta
     public Icon getPlayerIcon(Player player)
     {
         return player.getIcon();
+    }
+
+    @Override
+    public void addPlayer(Player player) {
+        jugadores.add(player);
+    }
+
+    @Override
+    public List<Player> getListPlayer() {
+        return jugadores;
     }
     
 }

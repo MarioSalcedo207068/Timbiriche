@@ -23,7 +23,7 @@ public class Player {
     @SerializedName("name")
     private String name;
     @SerializedName("color")
-    private Color color;
+    private String color;
     @SerializedName("pathImage")
     private String pathImage;
     private int score;
@@ -31,7 +31,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name, Color color, String pathImage, int score) {
+    public Player(String name, String color, String pathImage, int score) {
         this.name = name;
         this.color = color;
         this.pathImage = pathImage;
@@ -55,10 +55,16 @@ public class Player {
     }
 
     public Color getColor() {
-        return color;
+                if (color == "rojo") {
+            return Color.RED;
+
+        } else if (color == "azul") {
+            return Color.BLUE;
+        }
+        return null;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
