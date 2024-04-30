@@ -165,10 +165,10 @@ public class Registro extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnterior;
+    public javax.swing.JButton btnAnterior;
     public javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnSiguiente;
-    private javax.swing.JComboBox<String> cbxColor;
+    public javax.swing.JButton btnSiguiente;
+    public javax.swing.JComboBox<String> cbxColor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
