@@ -18,7 +18,7 @@ public class Line {
     @SerializedName("end")
     private Dot end;
     @SerializedName("color")
-    private Color color;
+    private String color;
 
     public Line() {
     }
@@ -44,11 +44,11 @@ public class Line {
         this.end = end;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
     

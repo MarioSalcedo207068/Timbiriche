@@ -19,9 +19,9 @@ public class Box {
     private Dot pointB;
     private Dot pointC;
     private Dot pointD;
-    private Color color;
+    private String color;
 
-    public Box(Dot pointA, Dot pointB, Dot pointC, Dot pointD, Color color) {
+    public Box(Dot pointA, Dot pointB, Dot pointC, Dot pointD, String color) {
         
         List<Dot> dots = new ArrayList<>();
         dots.add(pointA);
@@ -58,11 +58,11 @@ public class Box {
         return pointD;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

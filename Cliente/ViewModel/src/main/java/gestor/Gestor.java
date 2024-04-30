@@ -31,6 +31,7 @@ public class Gestor implements IObservadorEvento{
     private MessageReceiver mensajeReceiver;
     private GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
     private GestorJugador.GestorCuenta gestorJugador;
+    private Player jugadorPrincipal;
     
         public Gestor(GestorElementosGraficos.GestorElementosGraficos gestorelementosgraficos) {
         this.mensajeSender = new MessageSender();
@@ -61,7 +62,16 @@ public class Gestor implements IObservadorEvento{
             mensajeSender.enviarMensaje(jsonEvento);
 
     }
-        
+        /**
+         * 
+         * @param setting jugadoresPrincipales (en turno) 
+         */
+                public void setJugadorPrincipal(Player jugadorPrincipal) {
+            this.jugadorPrincipal = jugadorPrincipal;
+    }
+                public Player getJugadorPrincipal() {
+            return jugadorPrincipal;
+    }
         
     @Override
         public void nuevoMensajeRecibido(String mensaje) {

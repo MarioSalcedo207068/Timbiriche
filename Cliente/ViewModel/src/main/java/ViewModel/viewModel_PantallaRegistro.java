@@ -10,8 +10,14 @@ import GestorJugador.GestorCuenta;
 import View.Registro;
 import gestor.Gestor;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -29,6 +35,9 @@ public class viewModel_PantallaRegistro implements ActionListener {
     private String direccionImg;
     
     private viewModel_PantallaInicio viewModel_PantallaInicio;
+    private int contador = 0;
+    private Icon icon;
+    
 
     public viewModel_PantallaRegistro() {
         this.pantallaRegistro = new Registro();
@@ -44,36 +53,64 @@ public class viewModel_PantallaRegistro implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Player player = new Player();
         if (e.getSource() == pantallaRegistro.btnRegistrar) {
             String nombreJugador = pantallaRegistro.txtUserName.getText();
-            Player player = new Player(nombreJugador);
-            gestor.agregarJugador(player);
+            player.setName(nombreJugador);
+            
             
             if (nombreJugador.equals("")) {
                 JOptionPane.showMessageDialog(null, "El nombre del jugador está vacío");
-            } /*else {
-                this.gestorCuenta.setJugadorPrincipal(new Player(nombreJugador, direccionImg, color));
-                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestorCuenta);
-                viewModel_PantallaInicio.iniciarPantalla();
-                pantallaRegistro.dispose();
-            }*/
-        }
-        
-        /**
+            } else {
+                        /**
          * Para los colores
          */
-        /*if (e.getSource() == pantallaRegistro.cbxColor) {
+        if (e.getSource() == pantallaRegistro.cbxColor) {
             try {
-                color = Color.decode(extraerColor(pantallaRegistro.cbxColor));
+                color = (extraerColor(pantallaRegistro.cbxColor));
             } catch (NumberFormatException ex) {
                 color = null;
                 System.out.println(ex.getMessage());
             }
 
-        }*/
+        }
+                /*direccionImg = "images/" + contador + ".jpg";
+        icon = cargarImagen(direccionImg);
+        //new ImageIcon(getClass().getClassLoader().getResource("images/" + contador + ".jpg"));
+        pantallaRegistro.imgAvatar.setIcon(icon);*/
         
+                
+            player.setColor(color);
+            gestor.agregarJugador(player);
+                this.gestor.setJugadorPrincipal(player);
+                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
+                viewModel_PantallaInicio.iniciarPantalla();
+                pantallaRegistro.dispose();
+            }
+        }
         
+
     }
+    
+    
+    /*private Icon cargarImagen(String path) {
+        try {
+            URL imageUrl = getClass().getClassLoader().getResource(path);
+            Image originalImage = ImageIO.read(imageUrl);
+
+            int newWidth = 100;
+            int newHeight = 100;
+
+            Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+            return new ImageIcon(resizedImage);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la imagen: " + e.getMessage());
+            return null;
+        }
+    }*/
+    
+    
         private String extraerColor(JComboBox<String> comboBox) {
         colorSeleccionado = (String) comboBox.getSelectedItem();
         String colorJava = "";
@@ -101,12 +138,6 @@ public class viewModel_PantallaRegistro implements ActionListener {
                 break;
             case "morado":
                 colorJava = "#800080";
-                break;
-            case "gris claro":
-                colorJava = "#CCCCCC";
-                break;
-            case "gris oscuro":
-                colorJava = "#666666";
                 break;
         }
         return colorJava;

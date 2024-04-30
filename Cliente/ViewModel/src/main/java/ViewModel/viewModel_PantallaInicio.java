@@ -4,7 +4,6 @@
  */
 package ViewModel;
 
-import GestorJugador.GestorCuenta;
 import View.PantallaInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,16 +14,16 @@ import java.awt.event.ActionListener;
  */
 public class viewModel_PantallaInicio implements ActionListener{
     
-    private GestorCuenta gestorCuenta;
+    private gestor.Gestor gestor;
     private PantallaInicio pantallaInicio;
     private viewModel_PartidaNueva viewModel_PartidaNueva;
     private viewModel_UnirsePartida viewModel_UnirsePartida;
     
-        public viewModel_PantallaInicio(GestorCuenta gestorCuenta) {
-        this.gestorCuenta = gestorCuenta;
+        public viewModel_PantallaInicio(gestor.Gestor gestor) {
+        this.gestor = gestor;
         // Verifica si tableroData y el líder no son nulos antes de intentar acceder al nombre
-        if (gestorCuenta != null && gestorCuenta.getJugadorPrincipal() != null) {
-            System.out.println(gestorCuenta.getJugadorPrincipal().getName());
+        if (gestor != null && gestor.getJugadorPrincipal() != null) {
+            System.out.println(gestor.getJugadorPrincipal().getName());
         } else {
             // Maneja el caso en que tableroData o el líder es null
             System.out.println("TableroData o el líder es null");

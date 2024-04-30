@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 public class Player {
     @SerializedName("name")
     private String name;
-    @SerializedName("color")
+    
     private String color;
     @SerializedName("pathImage")
     private String pathImage;
@@ -31,7 +31,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name, String color, String pathImage) {
+    public Player(String name, String pathImage, String color) {
         this.name = name;
         this.color = color;
         this.pathImage = pathImage;
@@ -60,14 +60,8 @@ public class Player {
         this.name = name;
     }
 
-    public Color getColor() {
-                if (color == "rojo") {
-            return Color.RED;
-
-        } else if (color == "azul") {
-            return Color.BLUE;
-        }
-        return null;
+    public String getColor() {
+        return color;
     }
 
     public void setColor(String color) {
