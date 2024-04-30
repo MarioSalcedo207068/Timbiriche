@@ -31,12 +31,12 @@ public class viewModel_PantallaRegistro implements ActionListener {
     private Gestor gestor;
     private String color;
     private String colorSeleccionado;
-    private GestorCuenta gestorCuenta;
     private String direccionImg;
     
     private viewModel_PantallaInicio viewModel_PantallaInicio;
-    private int contador = 0;
-    private Icon icon;
+    //private int contador = 0;
+    //private Icon icon;
+    private GestorCuenta gestorCuenta;
     
 
     public viewModel_PantallaRegistro() {
@@ -57,14 +57,14 @@ public class viewModel_PantallaRegistro implements ActionListener {
         if (e.getSource() == pantallaRegistro.btnRegistrar) {
             String nombreJugador = pantallaRegistro.txtUserName.getText();
             player.setName(nombreJugador);
-            
-            
+
             if (nombreJugador.equals("")) {
                 JOptionPane.showMessageDialog(null, "El nombre del jugador está vacío");
-            } else {
-                        /**
-         * Para los colores
-         */
+            }   else if (color == null) {
+                JOptionPane.showMessageDialog(null, "El color del jugador está vacío");
+            }  else {
+                        
+         // Para los colores
         if (e.getSource() == pantallaRegistro.cbxColor) {
             try {
                 color = (extraerColor(pantallaRegistro.cbxColor));
@@ -79,16 +79,15 @@ public class viewModel_PantallaRegistro implements ActionListener {
         //new ImageIcon(getClass().getClassLoader().getResource("images/" + contador + ".jpg"));
         pantallaRegistro.imgAvatar.setIcon(icon);*/
         
-                
-            player.setColor(color);
-            gestor.agregarJugador(player);
-                this.gestor.setJugadorPrincipal(player);
+                gestor.agregarJugador(player);
+                player.setColor(color);
+                this.gestor.setJugadorPrincipal(player);                    
                 viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
                 viewModel_PantallaInicio.iniciarPantalla();
                 pantallaRegistro.dispose();
             }
         }
-        
+
 
     }
     

@@ -21,12 +21,12 @@ public class viewModel_PantallaInicio implements ActionListener{
     
         public viewModel_PantallaInicio(gestor.Gestor gestor) {
         this.gestor = gestor;
-        // Verifica si tableroData y el líder no son nulos antes de intentar acceder al nombre
+        
         if (gestor != null && gestor.getJugadorPrincipal() != null) {
             System.out.println(gestor.getJugadorPrincipal().getName());
         } else {
-            // Maneja el caso en que tableroData o el líder es null
-            System.out.println("TableroData o el líder es null");
+            
+            System.out.println("Error, null");
         }
         this.pantallaInicio = new PantallaInicio();
 
