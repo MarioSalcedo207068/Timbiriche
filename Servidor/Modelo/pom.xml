@@ -29,6 +29,10 @@
             <artifactId>amqp-client</artifactId>
             <version>5.20.0</version>
         </dependency>
-        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ViewModel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

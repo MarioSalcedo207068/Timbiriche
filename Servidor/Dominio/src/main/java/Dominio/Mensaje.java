@@ -15,6 +15,8 @@ public class Mensaje {
     private String tipo;
     @SerializedName("objeto")
     private Object object;
+    @SerializedName("distinatario")
+    private String distinatario = "jugadores";
 
     public Mensaje() {
     }
@@ -39,5 +41,11 @@ public class Mensaje {
     public void setObject(Object object) {
         this.object = object;
     }
+
+    public String getDistinatario() {
+        return distinatario;
+    }
+    
+    
 
 }

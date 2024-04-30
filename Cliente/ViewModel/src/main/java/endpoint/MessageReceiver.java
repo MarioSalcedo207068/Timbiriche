@@ -9,12 +9,19 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import java.util.ArrayList;
+import java.util.List;
+import observador.IObservableEvento;
+import observador.IObservadorEvento;
 
 /**
  *
  * @author salce
  */
-public class MessageReceiver {
+public class MessageReceiver implements IObservableEvento{
+    
+    private List<IObservadorEvento> observadores = new ArrayList<>();
+    
     private final static String EXCHANGE_NAME = "exchange-jugadores";
 
     public void iniciarCOnsumidor() {
@@ -44,6 +51,23 @@ public class MessageReceiver {
         } catch (Exception e) {
         }
 
+    }
+
+    @Override
+    public void actualizarTodos(String evento) {
+                for (IObservadorEvento observador : observadores) {
+            observador.nuevoMensajeRecibido(evento);
+        }
+    }
+
+    @Override
+    public void agregarObservador(IObservadorEvento observador) {
+                this.observadores.add(observador);
+    }
+
+    @Override
+    public void eliminarObservador(IObservadorEvento observador) {
+        this.observadores.remove(observador);
     }
 
 }
