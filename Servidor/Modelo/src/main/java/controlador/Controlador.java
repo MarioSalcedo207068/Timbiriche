@@ -4,12 +4,14 @@
  */
 package controlador;
 
+import Dominio.Dot;
 import Dominio.Mensaje;
 import Dominio.Player;
 import GestorJugador.GestorCuenta;
 import GestorJugador.IGestorCuenta;
 import com.google.gson.Gson;
 import endpoint.MessageSender;
+import java.util.List;
 
 /**
  *
@@ -19,12 +21,14 @@ public class Controlador {
     
     private final static Gson GSON = new Gson();
     IGestorCuenta gestorCuenta;
+    GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
     
     private MessageSender mensajeSender;
     
     public Controlador() {
         this.mensajeSender = new MessageSender();
         this.gestorCuenta = new GestorCuenta();
+        this.gestorElementosGraficos = new GestorElementosGraficos.GestorElementosGraficos();
     }
     
     public void procesarMensaje(String mensajeBody) {
@@ -38,6 +42,22 @@ public class Controlador {
             
             mensajeSender.enviarMensaje(respuestaJson);
         }
+        
+        if (mensaje.getTipo() == "calcularPuntosTablero") {
+            List<Integer> puntosTablero = (List<Integer>) mensaje.getObject();
+            List<Dot> puntos = 
+            gestorElementosGraficos.calcularPuntosTablero
+            (puntosTablero.get(0),puntosTablero.get(1),puntosTablero.get(2));
+            Mensaje mensajeRespuesta = new Mensaje("puntosCalculados",puntos);
+            
+            //Convertir json
+            String respuestaJson = GSON.toJson(mensajeRespuesta);
+            //envía a través del rabbit sender
+            mensajeSender.enviarMensaje(respuestaJson);
+            
+        }
     }
+    
+    
     
 }

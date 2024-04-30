@@ -9,6 +9,7 @@ import View.PartidaNueva;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import observador.IObservador;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 public class viewModel_PartidaNueva implements ActionListener {
 
     PartidaNueva partidaNueva;
-    GestorCuenta gestorCuenta;
+    gestor.Gestor gestor;
     Integer dimension;
     viewModelTablero viewModelTablero;
 
@@ -25,13 +26,13 @@ public class viewModel_PartidaNueva implements ActionListener {
     }
 
 
-    /*public ControladorPartidaNueva(TableroData tablero) {
-        this.gestorCuenta = tablero;
+    public viewModel_PartidaNueva(gestor.Gestor gestor) {
+        this.gestor = gestor;
         this.partidaNueva = new PartidaNueva();
-        this.gestorCuenta.agregarObservador(partidaNueva);
+        this.gestor.agregarObservador((IObservador) partidaNueva);
         this.generarEventosConfiguracion();
 
-    }*/
+    }
 
     private void generarEventosConfiguracion() {
         this.partidaNueva.btn10.addActionListener(this);
@@ -60,7 +61,7 @@ public class viewModel_PartidaNueva implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Seleccione una dimensión primero");
             } else {
                 System.out.println("COMENZAR");
-                //this.viewModelTablero = new viewModelTablero(dimension, tableroData);
+                this.viewModelTablero = new viewModelTablero(dimension, gestor);
                 //controladorTablero.iniciar();
                 partidaNueva.dispose();
             }

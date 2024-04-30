@@ -12,36 +12,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
+import observador.IObservador;
 
 /**
  *
  * @author salce
  */
-public class viewModelTablero {
+public class viewModelTablero implements ActionListener{
 
     Tablero tablero;
     Configuracion configuracion;
     TableroPanel tableroPanel;
-    GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
+    gestor.Gestor gestor;
     //ControladorPanelTablero controladorPanelTablero;
 
-    /*public ControladorTablero(int numeroPuntos,
-            TableroData tableroData) {
-        this.tablero = new Tablero(tableroData);
+    public viewModelTablero(int numeroPuntos, gestor.Gestor gestor) {
+        this.tablero = new Tablero(gestor);
         this.tableroPanel = new TableroPanel();
         tableroPanel.setSize(600, 600);
-        this.tableroData = tableroData;
-        this.tableroData.iniciarTablero(numeroPuntos,
+        this.gestor = gestor;
+        this.gestor.iniciarTablero(numeroPuntos,
                 tableroPanel.getWidth(), tableroPanel.getHeight());
-        tableroData.setJugadores(tableroData.getJugadores());
-        this.tableroPanel.cargarInformacion(tableroData);
+        gestor.setJugadores(gestor.getJugadores());
+        //this.tableroPanel.cargarInformacion(gestor);
         this.configuracion = new Configuracion();
 
-        tableroData.agregarObservador(tableroPanel);
+        gestor.agregarObservador((IObservador) tableroPanel);
 
-        this.controladorPanelTablero = new ControladorPanelTablero(tablero,
-                tableroPanel, tableroData);
-        this.generarEventosConfiguracion();
+        /*this.viewModel_PanelTablero = new viewModel_PanelTablero(tablero,
+                tableroPanel, gestor);
+        this.generarEventosConfiguracion();*/
 
     }
 
@@ -51,7 +51,7 @@ public class viewModelTablero {
     }
 
     public void iniciar() {
-        List<Dot> puntos = tableroData.getPuntos();
+        List<Dot> puntos = gestor.getPuntos();
         tablero.cargarTablero(tableroPanel);
 //        ingresarJugadores();
         tablero.setVisible(true);
@@ -69,6 +69,6 @@ public class viewModelTablero {
             }
         }
 
-    }*/
+    }
 
 }

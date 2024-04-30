@@ -179,7 +179,7 @@ public class GestorElementosGraficos implements IObservable{
         }
     }
     
-        private List<Dot> calcularPuntosTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
+        public List<Dot> calcularPuntosTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
         List<Dot> puntos = new ArrayList<>();
         int espacioAltura = altoTablero / cantidadPuntos;
         int espacioAncho = anchoTablero / cantidadPuntos;
@@ -258,6 +258,7 @@ public class GestorElementosGraficos implements IObservable{
         }
         return false;
     }
+        
 
     @Override
     public void actualizarTodos() {

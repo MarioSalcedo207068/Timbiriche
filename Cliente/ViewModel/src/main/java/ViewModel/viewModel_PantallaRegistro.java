@@ -57,15 +57,29 @@ public class viewModel_PantallaRegistro implements ActionListener {
         if (e.getSource() == pantallaRegistro.btnRegistrar) {
             String nombreJugador = pantallaRegistro.txtUserName.getText();
             player.setName(nombreJugador);
-
+        
             if (nombreJugador.equals("")) {
                 JOptionPane.showMessageDialog(null, "El nombre del jugador está vacío");
             }   else if (color == null) {
                 JOptionPane.showMessageDialog(null, "El color del jugador está vacío");
             }  else {
                         
-         // Para los colores
-        if (e.getSource() == pantallaRegistro.cbxColor) {
+                /*direccionImg = "images/" + contador + ".jpg";
+        icon = cargarImagen(direccionImg);
+        //new ImageIcon(getClass().getClassLoader().getResource("images/" + contador + ".jpg"));
+        pantallaRegistro.imgAvatar.setIcon(icon);*/
+                
+                player.setColor(color);
+                System.out.println(color.toString());
+                gestor.agregarJugador(player);
+                this.gestor.setJugadorPrincipal(player);                    
+                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
+                viewModel_PantallaInicio.iniciarPantalla();
+                pantallaRegistro.dispose();
+            }
+        }
+    // Para los colores
+        if(e.getSource() == pantallaRegistro.cbxColor) {
             try {
                 color = (extraerColor(pantallaRegistro.cbxColor));
             } catch (NumberFormatException ex) {
@@ -74,20 +88,6 @@ public class viewModel_PantallaRegistro implements ActionListener {
             }
 
         }
-                /*direccionImg = "images/" + contador + ".jpg";
-        icon = cargarImagen(direccionImg);
-        //new ImageIcon(getClass().getClassLoader().getResource("images/" + contador + ".jpg"));
-        pantallaRegistro.imgAvatar.setIcon(icon);*/
-        
-                gestor.agregarJugador(player);
-                player.setColor(color);
-                this.gestor.setJugadorPrincipal(player);                    
-                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
-                viewModel_PantallaInicio.iniciarPantalla();
-                pantallaRegistro.dispose();
-            }
-        }
-
 
     }
     

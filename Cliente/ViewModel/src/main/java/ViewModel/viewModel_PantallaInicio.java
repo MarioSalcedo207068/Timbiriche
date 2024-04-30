@@ -36,8 +36,8 @@ public class viewModel_PantallaInicio implements ActionListener{
     }
         
             public void iniciarPantalla() {
-        //this.viewModel_PartidaNueva = new viewModel_PartidaNueva(tableroData);
-        //this.viewModel_UnirsePartida = new viewModel_UnirsePartida(tableroData);
+        this.viewModel_PartidaNueva = new viewModel_PartidaNueva(gestor);
+        //this.viewModel_UnirsePartida = new viewModel_UnirsePartida(gestor);
         this.pantallaInicio.setVisible(true);
     }
             

@@ -63,7 +63,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel5.setText("Color");
 
         cbxColor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Color", "Negro", "Blanco", "Rojo", "Verde", "Azul", "Amarillo", "Cian", "Morado" }));
+        cbxColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Blanco", "Rojo", "Verde", "Azul", "Amarillo", "Cian", "Morado" }));
 
         btnAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAnterior.setText("Previous");

@@ -38,11 +38,11 @@ public class MessageReceiver implements IObservableEvento{
 
             channel.queueBind(queueName, EXCHANGE_NAME, "");
 
-            System.out.println(" [*] Esperando mensajes desde API Gateway. Para salir, presiona CTRL+C");
+            System.out.println(" [*] Esperando mensajes. Para salir, presiona CTRL+C");
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), "UTF-8");
-                System.out.println(" [x] Recibido desde API Gateway: '" + message + "'");
+                System.out.println(" [x] Recibido desde lado del Cliente: '" + message + "'");
                 // Implementa la lógica para procesar el mensaje aquí
             };
 

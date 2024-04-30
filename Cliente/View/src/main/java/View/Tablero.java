@@ -4,12 +4,20 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 /**
  *
  * @author salce
  */
 public class Tablero extends javax.swing.JFrame {
 
+    private gestor.Gestor gestor;
+    
     /**
      * Creates new form Tablero
      */
@@ -17,6 +25,55 @@ public class Tablero extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Tablero(gestor.Gestor gestor) {
+        initComponents();
+        this.gestor = gestor;
+        cargarJugadores();
+    }
+
+    public void cargarTablero(JPanel panelTablero) {
+        panelPrincipal.setSize(panelTablero.getWidth(),
+                panelTablero.getHeight());
+        panelTablero.setLocation(0, 0);
+        panelTablero.setBackground(Color.GRAY);
+        panelPrincipal.removeAll();
+        panelPrincipal.add(panelTablero, BorderLayout.CENTER);
+        panelPrincipal.revalidate();
+        panelPrincipal.repaint();
+    }
+
+    private void cargarJugadores() {
+
+        for (int i = 0; i < gestor.getJugadores().size(); i++) {
+            System.out.println(i);
+        }
+        this.imgPlayer1.setIcon(gestor.getJugadores().get(0).getIcon());
+        this.txtPlayer1.setText(gestor.getJugadores().get(0).getName());
+        //Border borde = BorderFactory.createLineBorder(gestor.getJugadores().get(0).getColor(), 3);
+        
+        //this.imgPlayer1.setBorder(borde);
+        if (gestor.getJugadores().size() == 2) {
+            //imgPlayer2.setIcon(gestor.getJugadores().get(1).getIcono());
+            txtPlayer2.setText(gestor.getJugadores().get(1).getName());
+            //borde = BorderFactory.createLineBorder(gestor.getJugadores().get(1).getColor(), 3);
+            //this.imgPlayer2.setBorder(borde);
+        }
+        if (gestor.getJugadores().size() == 3) {
+            imgPlayer3.setIcon(gestor.getJugadores().get(2).getIcon());
+            txtPlayer3.setText(gestor.getJugadores().get(2).getName());
+            //borde = BorderFactory.createLineBorder(gestor.getJugadores().get(2).getColor(), 3);
+            //this.imgPlayer3.setBorder(borde);
+        }
+        if (gestor.getJugadores().size() == 4) {
+            imgPlayer4.setIcon(gestor.getJugadores().get(3).getIcon());
+            txtPlayer4.setText(gestor.getJugadores().get(3).getName());
+           // borde = BorderFactory.createLineBorder(gestor.getJugadores().get(3).getColor(), 3);
+            //this.imgPlayer4.setBorder(borde);
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,11 +84,11 @@ public class Tablero extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        imgPlayer3 = new javax.swing.JLabel();
+        imgPlayer2 = new javax.swing.JLabel();
+        imgPlayer4 = new javax.swing.JLabel();
         txtPlayer1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        imgPlayer1 = new javax.swing.JLabel();
         txtPlayer2 = new javax.swing.JLabel();
         txtPlayer3 = new javax.swing.JLabel();
         txtPlayer4 = new javax.swing.JLabel();
@@ -46,16 +103,16 @@ public class Tablero extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
+        imgPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
+        imgPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
+        imgPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
 
         txtPlayer1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPlayer1.setText("Player 1");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
+        imgPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/def avatar.jpg"))); // NOI18N
 
         txtPlayer2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPlayer2.setText("Player 2");
@@ -105,8 +162,8 @@ public class Tablero extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
+                                .addComponent(imgPlayer3)
+                                .addComponent(imgPlayer1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -130,8 +187,8 @@ public class Tablero extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPlayer2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))))
+                            .addComponent(imgPlayer4)
+                            .addComponent(imgPlayer2))))
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(451, 451, 451)
@@ -147,25 +204,25 @@ public class Tablero extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(imgPlayer1)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtPlayer1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(score1)
                                 .addGap(174, 174, 174)
-                                .addComponent(jLabel1)
+                                .addComponent(imgPlayer3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtPlayer3)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(score3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(imgPlayer2)
                         .addGap(18, 18, 18)
                         .addComponent(txtPlayer2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(score2)
                         .addGap(174, 174, 174)
-                        .addComponent(jLabel4)
+                        .addComponent(imgPlayer4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPlayer4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -228,10 +285,10 @@ public class Tablero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConfiguracion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel imgPlayer1;
+    public javax.swing.JLabel imgPlayer2;
+    public javax.swing.JLabel imgPlayer3;
+    public javax.swing.JLabel imgPlayer4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel score1;
