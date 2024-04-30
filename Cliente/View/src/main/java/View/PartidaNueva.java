@@ -197,10 +197,10 @@ public class PartidaNueva extends javax.swing.JFrame {
     }//GEN-LAST:event_btn30ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn10;
-    private javax.swing.JButton btn20;
-    private javax.swing.JButton btn30;
-    private javax.swing.JButton btnStart;
+    public javax.swing.JButton btn10;
+    public javax.swing.JButton btn20;
+    public javax.swing.JButton btn30;
+    public javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

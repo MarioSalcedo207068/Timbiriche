@@ -6,10 +6,15 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
+import observador.IObservable;
+import observador.IObservador;
 
 
 
-public class GestorCuenta implements IGestorCuenta {
+public class GestorCuenta implements IGestorCuenta, IObservable {
+    
+        private List<IObservador> observadoresPantalla;
+        private Player jugadorPrincipal;
     
         List<Player> jugadores = new ArrayList<>();
     
@@ -67,5 +72,29 @@ public class GestorCuenta implements IGestorCuenta {
     public List<Player> getListPlayer() {
         return jugadores;
     }
+
+    @Override
+    public void actualizarTodos() {
+        for (IObservador observadores : observadoresPantalla) {
+            observadores.actualizar();
+        }
+    }
+
+    @Override
+    public void agregarObservador(IObservador observador) {
+        this.observadoresPantalla.add(observador);
+    }
+
+    @Override
+    public void eliminarObservador(IObservador observador) {
+        this.observadoresPantalla.remove(observador);
+    }
     
+        public Player getJugadorPrincipal() {
+            return jugadorPrincipal;
+    }
+        
+        public void setJugadorPrincipal(Player jugadorPrincipal) {
+            this.jugadorPrincipal = jugadorPrincipal;
+    }
 }

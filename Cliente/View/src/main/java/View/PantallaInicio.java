@@ -133,8 +133,8 @@ public class PantallaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNuevaPartida;
-    private javax.swing.JButton btnUnirse;
+    public javax.swing.JButton btnNuevaPartida;
+    public javax.swing.JButton btnUnirse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

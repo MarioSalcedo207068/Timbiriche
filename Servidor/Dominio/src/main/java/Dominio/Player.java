@@ -31,6 +31,12 @@ public class Player {
     public Player() {
     }
 
+    public Player(String name, String color, String pathImage) {
+        this.name = name;
+        this.color = color;
+        this.pathImage = pathImage;
+    }
+    
     public Player(String name, String color, String pathImage, int score) {
         this.name = name;
         this.color = color;

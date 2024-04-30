@@ -6,6 +6,7 @@ package ViewModel;
 
 import Dominio.Mensaje;
 import Dominio.Player;
+import GestorJugador.GestorCuenta;
 import View.Registro;
 import gestor.Gestor;
 import java.awt.Color;
@@ -22,8 +23,12 @@ public class viewModel_PantallaRegistro implements ActionListener {
 
     private Registro pantallaRegistro;
     private Gestor gestor;
-    private Color color;
+    private String color;
     private String colorSeleccionado;
+    private GestorCuenta gestorCuenta;
+    private String direccionImg;
+    
+    private viewModel_PantallaInicio viewModel_PantallaInicio;
 
     public viewModel_PantallaRegistro() {
         this.pantallaRegistro = new Registro();
@@ -45,14 +50,19 @@ public class viewModel_PantallaRegistro implements ActionListener {
             gestor.agregarJugador(player);
             
             if (nombreJugador.equals("")) {
-                JOptionPane.showMessageDialog(null, "El nickname del jugador está vacío");
-            }
+                JOptionPane.showMessageDialog(null, "El nombre del jugador está vacío");
+            } /*else {
+                this.gestorCuenta.setJugadorPrincipal(new Player(nombreJugador, direccionImg, color));
+                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestorCuenta);
+                viewModel_PantallaInicio.iniciarPantalla();
+                pantallaRegistro.dispose();
+            }*/
         }
         
         /**
          * Para los colores
          */
-        if (e.getSource() == pantallaRegistro.cbxColor) {
+        /*if (e.getSource() == pantallaRegistro.cbxColor) {
             try {
                 color = Color.decode(extraerColor(pantallaRegistro.cbxColor));
             } catch (NumberFormatException ex) {
@@ -60,7 +70,7 @@ public class viewModel_PantallaRegistro implements ActionListener {
                 System.out.println(ex.getMessage());
             }
 
-        }
+        }*/
         
         
     }
