@@ -81,6 +81,18 @@ public class Gestor implements IObservable{
         String messageBody = convertirMensaje(mensaje);
         mensajeSender.enviarMensaje(messageBody);
     }
+    
+        public void iniciarTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
+        //editado
+        List<Integer> iniciarTablero = new ArrayList<>();
+        iniciarTablero.add(cantidadPuntos);
+        iniciarTablero.add(anchoTablero);
+        iniciarTablero.add(altoTablero);
+        Mensaje mensaje = new Mensaje("iniciarTablero",iniciarTablero);
+        this.lineas = new ArrayList<>();
+        this.cuadrados = new ArrayList<>();
+        this.calcularDistancia();
+    }
             
     
     private String convertirMensaje(Mensaje mensaje) {
@@ -153,12 +165,6 @@ public class Gestor implements IObservable{
         this.jugadores = jugadores;
     }
     
-    public void iniciarTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
-        this.puntos = calcularPuntosTablero(cantidadPuntos, anchoTablero, altoTablero);
-        this.lineas = new ArrayList<>();
-        this.cuadrados = new ArrayList<>();
-        this.calcularDistancia();
-    }
         private void calcularDistancia() {
         Dot puntoA = this.puntos.get(0);
         Dot puntoB = this.puntos.get(1);;
@@ -174,22 +180,7 @@ public class Gestor implements IObservable{
 
     public void setPuntos(List<Dot> puntos) {
         this.puntos = puntos;
-    }
-    
-        private List<Dot> calcularPuntosTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
-        List<Dot> puntos = new ArrayList<>();
-        int espacioAltura = altoTablero / cantidadPuntos;
-        int espacioAncho = anchoTablero / cantidadPuntos;
-
-        for (int i = (espacioAltura / 2); i <= altoTablero - (espacioAltura / 2); i += espacioAltura) {
-            for (int j = (espacioAncho / 2); j <= anchoTablero - (espacioAncho / 2); j += espacioAncho) {
-                puntos.add(new Dot(j, i));
-            }
-
-        }
-        return puntos;
-    }
-        
+    }    
             public void iniciar() {
         List<Dot> puntos = gestor.getPuntos();
         tablero.cargarTablero(tableroPanel);
