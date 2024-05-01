@@ -35,7 +35,7 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
 
-            System.out.println(" [*] Esperando mensajes desde API Gateway. Para salir, presiona CTRL+C");
+            System.out.println(" [*] Esperando mensajes desde Servidor. Para salir, presiona CTRL+C");
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 
