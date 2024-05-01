@@ -111,4 +111,12 @@ public class GestorCuenta implements IGestorCuenta, IObservable {
             Logger.getLogger(ProcesarEvento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }*/
+        
+        //agregado para configuracion
+        
+       /* public void setColorJugador(String color, int jugador) {
+        List<Player> listaDeJugadores = tableroData.getJugadores();
+        Player jugadorActual = listaDeJugadores.get(jugador);
+        jugadorActual.setColor(color);
+    }*/
 }

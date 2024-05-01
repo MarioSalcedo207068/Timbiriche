@@ -8,6 +8,7 @@ import Dominio.Dot;
 import View.Configuracion;
 import View.Tablero;
 import View.TableroPanel;
+import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -23,10 +24,10 @@ public class viewModelTablero implements ActionListener{
     Tablero tablero;
     Configuracion configuracion;
     TableroPanel tableroPanel;
-    gestor.Gestor gestor;
-    //ControladorPanelTablero controladorPanelTablero;
+    Gestor gestor;
+    viewModelPanelTablero viewModelPanelTablero;
 
-    public viewModelTablero(int numeroPuntos, gestor.Gestor gestor) {
+    public viewModelTablero(int numeroPuntos, Gestor gestor) {
         this.tablero = new Tablero(gestor);
         this.tableroPanel = new TableroPanel();
         tableroPanel.setSize(600, 600);
@@ -34,14 +35,14 @@ public class viewModelTablero implements ActionListener{
         this.gestor.iniciarTablero(numeroPuntos,
                 tableroPanel.getWidth(), tableroPanel.getHeight());
         gestor.setJugadores(gestor.getJugadores());
-        //this.tableroPanel.cargarInformacion(gestor);
+        this.tableroPanel.cargarInformacion(gestor);
         this.configuracion = new Configuracion();
 
         gestor.agregarObservador((IObservador) tableroPanel);
 
-        /*this.viewModel_PanelTablero = new viewModel_PanelTablero(tablero,
+        this.viewModelPanelTablero = new viewModelPanelTablero(tablero,
                 tableroPanel, gestor);
-        this.generarEventosConfiguracion();*/
+        this.generarEventosConfiguracion();
 
     }
 

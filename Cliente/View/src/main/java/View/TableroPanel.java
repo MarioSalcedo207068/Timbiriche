@@ -4,17 +4,55 @@
  */
 package View;
 
+import gestor.Gestor;
+import java.awt.Graphics;
+import observador.IObservador;
+
 /**
  *
  * @author salce
  */
-public class TableroPanel extends javax.swing.JPanel {
+public class TableroPanel extends javax.swing.JPanel implements IObservador {
 
-    /**
-     * Creates new form TableroPanel
-     */
+    private Gestor gestor;
+
     public TableroPanel() {
         initComponents();
+        this.gestor = new Gestor();
+    }
+
+    public void cargarInformacion(Gestor gestor) {
+        this.gestor = gestor;
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        dibujarLineas(g);
+        dibujarCuadrados(g);
+        //dibujarPuntos(g);
+
+    }
+
+    /*private void dibujarPuntos(Graphics g) {
+        gestor.dibujarPuntos(g, gestor.getPuntos(),
+                gestor.getPuntoA(), gestor.getPuntoB());
+    }*/
+
+    private void dibujarLineas(Graphics g) {
+        //gestor.dibujarLineas(g, gestor.getLineas());
+
+    }
+
+    private void dibujarCuadrados(Graphics g) {
+        //gestor.dibujarCuadrados(g, gestor.getCuadrados(),
+          //      Double.valueOf(gestor.getDistanciaPuntos()).intValue());
+    }
+
+    @Override
+    public void actualizar() {
+        this.repaint();
     }
 
     /**

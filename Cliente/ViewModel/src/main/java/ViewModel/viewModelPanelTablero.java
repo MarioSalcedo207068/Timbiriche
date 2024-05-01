@@ -18,7 +18,7 @@ import javax.swing.BorderFactory;
  */
 public class viewModelPanelTablero implements MouseListener {
 
-//    TableroPanel tableroPanel;
+    //TableroPanel tableroPanel;
     Tablero tablero;
     Gestor gestor;
 
