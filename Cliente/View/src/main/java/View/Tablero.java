@@ -290,7 +290,7 @@ public class Tablero extends javax.swing.JFrame {
     public javax.swing.JLabel imgPlayer3;
     public javax.swing.JLabel imgPlayer4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel panelPrincipal;
+    public javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
     private javax.swing.JLabel score3;

@@ -4,17 +4,35 @@
  */
 package View;
 
+import gestor.Gestor;
+import observador.IObservador;
+
 /**
  *
  * @author salce
  */
-public class PartidaNueva extends javax.swing.JFrame {
+public class PartidaNueva extends javax.swing.JFrame implements IObservador {
+
+    private Gestor gestor;
+    //private GestorPartidaNueva gestorPartidaNueva;
 
     /**
      * Creates new form PartidaNueva
      */
     public PartidaNueva() {
         initComponents();
+        //this.gestorPartidaNueva = new GestorPartidaNueva();
+    }
+
+    public void setCargarInfo(Gestor gestor) {
+        this.gestor = gestor;
+        playerlabel.setText(gestor.getJugadorPrincipal().getName());
+    }
+
+    @Override
+    public void actualizar() {
+        //this.gestorPartidaNueva.cargarJugadores(this, gestor);
+        this.repaint();
     }
 
     /**
@@ -41,6 +59,7 @@ public class PartidaNueva extends javax.swing.JFrame {
         btn30 = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        playerlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,10 +119,6 @@ public class PartidaNueva extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtPlayer1)
-                .addGap(249, 249, 249))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -120,9 +135,9 @@ public class PartidaNueva extends javax.swing.JFrame {
                                 .addGap(119, 119, 119)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel1)))
-                            .addComponent(btn10)))
+                                    .addComponent(jLabel4)))
+                            .addComponent(btn10))
+                        .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,12 +149,25 @@ public class PartidaNueva extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel5))
                 .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtPlayer1)
+                        .addGap(249, 249, 249))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(playerlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(148, 148, 148))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(playerlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -210,7 +238,8 @@ public class PartidaNueva extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelCodigo;
+    public javax.swing.JLabel labelCodigo;
+    public javax.swing.JLabel playerlabel;
     private javax.swing.JLabel txtPlayer1;
     // End of variables declaration//GEN-END:variables
 }

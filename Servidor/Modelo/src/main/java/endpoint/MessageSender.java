@@ -30,7 +30,7 @@ public class MessageSender {
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
             channel.basicPublish(EXCHANGE_NAME, "", null, mensaje.getBytes());
-            System.out.println(" [x] Enviado desde API Gateway: '" + mensaje + "'");
+            System.out.println(" [x] Enviado desde Servidor: '" + mensaje + "'");
         } catch (IOException ex) {
             Logger.getLogger(MessageSender.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TimeoutException ex) {

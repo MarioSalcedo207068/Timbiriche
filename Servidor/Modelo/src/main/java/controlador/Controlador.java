@@ -20,9 +20,10 @@ import java.util.List;
 public class Controlador {
     
     private final static Gson GSON = new Gson();
+    //Tablero data
     IGestorCuenta gestorCuenta;
     GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
-    
+    //procesar el evento (mensajeSender)
     private MessageSender mensajeSender;
     
     public Controlador() {

@@ -7,26 +7,27 @@ package ViewModel;
 import View.PantallaInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import gestor.Gestor;
 /**
  *
  * @author salce
  */
+
 public class viewModel_PantallaInicio implements ActionListener{
     
-    private gestor.Gestor gestor;
+    private Gestor gestor;
     private PantallaInicio pantallaInicio;
     private viewModel_PartidaNueva viewModel_PartidaNueva;
     private viewModel_UnirsePartida viewModel_UnirsePartida;
     
-        public viewModel_PantallaInicio(gestor.Gestor gestor) {
+        public viewModel_PantallaInicio(Gestor gestor) {
         this.gestor = gestor;
         
         if (gestor != null && gestor.getJugadorPrincipal() != null) {
             System.out.println(gestor.getJugadorPrincipal().getName());
         } else {
-            
-            System.out.println("Error, null");
+            // Maneja el caso en que gestor es null
+            System.out.println("Gestor es null");
         }
         this.pantallaInicio = new PantallaInicio();
 
@@ -35,9 +36,9 @@ public class viewModel_PantallaInicio implements ActionListener{
 
     }
         
-            public void iniciarPantalla() {
+    public void iniciarPantalla() {
         this.viewModel_PartidaNueva = new viewModel_PartidaNueva(gestor);
-        //this.viewModel_UnirsePartida = new viewModel_UnirsePartida(gestor);
+        this.viewModel_UnirsePartida = new viewModel_UnirsePartida(gestor);
         this.pantallaInicio.setVisible(true);
     }
             
@@ -45,11 +46,11 @@ public class viewModel_PantallaInicio implements ActionListener{
     public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == this.pantallaInicio.btnNuevaPartida) {
             this.pantallaInicio.dispose();
-            //viewModel_PartidaNueva.iniciarPantalla();
+            viewModel_PartidaNueva.iniciarPantalla();
         }
         if (e.getSource() == this.pantallaInicio.btnUnirse) {
             this.pantallaInicio.dispose();
-            //viewModel_UnirsePartida.iniciarPantalla();
+            viewModel_UnirsePartida.iniciarPantalla();
         }
     }
     

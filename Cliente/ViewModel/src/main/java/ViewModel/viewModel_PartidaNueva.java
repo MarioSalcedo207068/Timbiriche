@@ -4,8 +4,8 @@
  */
 package ViewModel;
 
-import GestorJugador.GestorCuenta;
 import View.PartidaNueva;
+import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -18,7 +18,7 @@ import observador.IObservador;
 public class viewModel_PartidaNueva implements ActionListener {
 
     PartidaNueva partidaNueva;
-    gestor.Gestor gestor;
+    Gestor gestor;
     Integer dimension;
     viewModelTablero viewModelTablero;
 
@@ -26,7 +26,7 @@ public class viewModel_PartidaNueva implements ActionListener {
     }
 
 
-    public viewModel_PartidaNueva(gestor.Gestor gestor) {
+    public viewModel_PartidaNueva(Gestor gestor) {
         this.gestor = gestor;
         this.partidaNueva = new PartidaNueva();
         this.gestor.agregarObservador((IObservador) partidaNueva);
@@ -41,13 +41,13 @@ public class viewModel_PartidaNueva implements ActionListener {
         this.partidaNueva.btnStart.addActionListener(this);
     }
 
-    /*public void iniciarPantalla() {
-        this.tableroData.iniciarJugador();
-        this.partidaNueva.setCargarInfo(this.tableroData);
+    public void iniciarPantalla() {
+        //this.gestor.iniciarJugador();
+        this.partidaNueva.setCargarInfo(this.gestor);
         this.partidaNueva.setVisible(true);
-        this.tableroData.mandarJugadorPrincipal();
+        //this.gestor.mandarJugadorPrincipal();
 
-    }*/
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -62,18 +62,18 @@ public class viewModel_PartidaNueva implements ActionListener {
             } else {
                 System.out.println("COMENZAR");
                 this.viewModelTablero = new viewModelTablero(dimension, gestor);
-                //controladorTablero.iniciar();
+                viewModelTablero.iniciar();
                 partidaNueva.dispose();
             }
         }
     }
 
     public void comenzarPartidaNueva(boolean listo) {
-        /*if (listo == true) {
-            this.controladorTablero = new ControladorTablero(dimension, tableroData);
-            controladorTablero.iniciar();
+        if (listo == true) {
+            this.viewModelTablero = new viewModelTablero(dimension, gestor);
+            viewModelTablero.iniciar();
             partidaNueva.dispose();
 
-        }*/
+        }
     }
 }

@@ -3,8 +3,12 @@ package GestorJugador;
 
 import Dominio.Player;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import observador.IObservable;
 import observador.IObservador;
@@ -97,4 +101,14 @@ public class GestorCuenta implements IGestorCuenta, IObservable {
         public void setJugadorPrincipal(Player jugadorPrincipal) {
             this.jugadorPrincipal = jugadorPrincipal;
     }
+        
+            /*public void iniciarJugador() {
+        try {
+            recibirEvento.recibirEvento();
+        } catch (IOException ex) {
+            Logger.getLogger(ProcesarEvento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TimeoutException ex) {
+            Logger.getLogger(ProcesarEvento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
