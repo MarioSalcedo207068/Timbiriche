@@ -46,10 +46,10 @@ public class viewModelConfiguracion implements ActionListener {
         this.configuracion.btnAceptar.addActionListener(this);
         this.configuracion.btnCancelar.addActionListener(this);
 
-        this.configuracion.comBoxColores.addActionListener(this);
-        this.configuracion.comBoxColores1.addActionListener(this);
-        this.configuracion.comBoxColores2.addActionListener(this);
-        this.configuracion.comBoxColores3.addActionListener(this);
+        this.configuracion.cbxColor1.addActionListener(this);
+        this.configuracion.cbxColor2.addActionListener(this);
+        this.configuracion.cbxColor3.addActionListener(this);
+        this.configuracion.cbxColor4.addActionListener(this);
     }
 
     @Override
@@ -67,21 +67,21 @@ public class viewModelConfiguracion implements ActionListener {
         }
 
         //COMBOBOX ACTION
-        if (e.getSource() == configuracion.comBoxColores) {
-            Color color = Color.decode(extraerColor(configuracion.comBoxColores));
-            setColorJugador(color, 0);
+        if (e.getSource() == configuracion.cbxColor1) {
+            Color color = Color.decode(extraerColor(configuracion.cbxColor1));
+            //setColorJugador(color, 0);
         }
-        if (e.getSource() == configuracion.comBoxColores1) {
-            Color color = Color.decode(extraerColor(configuracion.comBoxColores1));
-            setColorJugador(color, 1);
+        if (e.getSource() == configuracion.cbxColor2) {
+            Color color = Color.decode(extraerColor(configuracion.cbxColor2));
+            //setColorJugador(color, 1);
         }
-        if (e.getSource() == configuracion.comBoxColores2) {
-            Color color = Color.decode(extraerColor(configuracion.comBoxColores2));
-            setColorJugador(color, 2);
+        if (e.getSource() == configuracion.cbxColor3) {
+            Color color = Color.decode(extraerColor(configuracion.cbxColor3));
+            //setColorJugador(color, 2);
         }
-        if (e.getSource() == configuracion.comBoxColores3) {
-            Color color = Color.decode(extraerColor(configuracion.comBoxColores3));
-            setColorJugador(color, 3);
+        if (e.getSource() == configuracion.cbxColor4) {
+            Color color = Color.decode(extraerColor(configuracion.cbxColor4));
+            //setColorJugador(color, 3);
         }
     }
 
@@ -123,9 +123,5 @@ public class viewModelConfiguracion implements ActionListener {
         return colorJava;
     }
 
-    public void setColorJugador(Color color, int jugador) {
-        List<Jugador> listaDeJugadores = tableroData.getJugadores();
-        Jugador jugadorActual = listaDeJugadores.get(jugador);
-        jugadorActual.setColor(color);
-    }
+
 }
