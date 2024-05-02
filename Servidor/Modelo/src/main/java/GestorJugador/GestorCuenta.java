@@ -1,24 +1,20 @@
 
 package GestorJugador;
 
+import Dominio.Game;
 import Dominio.Player;
-import java.awt.Color;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
-import observador.IObservable;
 import observador.IObservador;
 
 
 
-public class GestorCuenta implements IGestorCuenta, IObservable {
+public class GestorCuenta implements IGestorCuenta {
     
         private List<IObservador> observadoresPantalla;
         private Player jugadorPrincipal;
+        private Game game = Game.getInstance();
     
         List<Player> jugadores = new ArrayList<>();
     
@@ -69,29 +65,12 @@ public class GestorCuenta implements IGestorCuenta, IObservable {
 
     @Override
     public void addPlayer(Player player) {
-        jugadores.add(player);
+        game.addPlayer(player);
     }
 
     @Override
     public List<Player> getListPlayer() {
-        return jugadores;
-    }
-
-    @Override
-    public void actualizarTodos() {
-        for (IObservador observadores : observadoresPantalla) {
-            observadores.actualizar();
-        }
-    }
-
-    @Override
-    public void agregarObservador(IObservador observador) {
-        this.observadoresPantalla.add(observador);
-    }
-
-    @Override
-    public void eliminarObservador(IObservador observador) {
-        this.observadoresPantalla.remove(observador);
+        return game.getPlayers();
     }
     
         public Player getJugadorPrincipal() {

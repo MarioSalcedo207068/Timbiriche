@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -19,11 +21,12 @@ public class Player {
 
     @SerializedName("name")
     private String name;
-
     private String color;
     @SerializedName("pathImage")
     private String pathImage;
     private int score;
+    private List<Line> lineas = new ArrayList<>();
+    private List<Box> boxes = new ArrayList<>();
 
     /**
      * Método constructor base de la clase.
@@ -31,6 +34,11 @@ public class Player {
     public Player() {
     }
 
+    public Player(String name, String color) {
+        this.name = name;
+        this.setColor(color);
+    }
+        
     /**
      * Método constructor con parámetros de la clase.
      *
@@ -111,6 +119,12 @@ public class Player {
      * @param color Cadena con el color a establecer.
      */
     public void setColor(String color) {
+        for (Line linea : lineas) {
+            linea.setColor(color);
+        }
+        for (Box box : boxes) {
+            box.setColor(color);
+        }
         this.color = color;
     }
 
@@ -213,6 +227,30 @@ public class Player {
             return false;
         }
         return Objects.equals(this.color, other.color);
+    }
+    
+        public List<Line> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<Line> lineas) {
+        this.lineas = lineas;
+    }
+
+    public void addLine(Line line) {
+        this.lineas.add(line);
+    }
+
+    public List<Box> getBoxes() {
+        return boxes;
+    }
+
+    public void setBoxes(List<Box> boxes) {
+        this.boxes = boxes;
+    }
+
+    public void addBox(Box box) {
+        this.boxes.add(box);
     }
     
     /**

@@ -1,6 +1,8 @@
 
 package Dominio;
 
+import java.util.List;
+
 
 /**
  * Clase para representar el tablero dentro del proyecto Timbiriche.
@@ -10,6 +12,9 @@ public class Board {
     private int Height;
     private int Width;
     private int NumberOfDots;
+    private List<Box> boxes;
+    private List<Dot> dots;
+    private List<Line> lines;
 
     /**
      * Método constructor base de la clase.
@@ -75,6 +80,38 @@ public class Board {
      */    
     public void setWidth(int Width) {
         this.Width = Width;
+    }
+    
+        public List<Box> getBoxes() {
+        return boxes;
+    }
+
+    public void setBoxes(List<Box> boxes) {
+        this.boxes = boxes;
+    }
+
+    public List<Dot> getDots() {
+        return dots;
+    }
+
+    public void setDots(List<Dot> dots) {
+        this.dots = dots;
+    }
+
+    public List<Line> getLines() {
+        return lines;
+    }
+
+    public void setLines(List<Line> lines) {
+        this.lines = lines;
+    }
+
+    public void addLine(Line line) {
+        this.lines.add(line);
+    }
+
+    public void addBox(Box box) {
+        this.boxes.add(box);
     }
     
 }

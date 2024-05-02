@@ -20,6 +20,9 @@ import java.util.logging.Logger;
 public class MessageSender {
     
     private final static String EXCHANGE_NAME = "exchange-jugadores";
+        
+    public MessageSender() {
+    }
 
     public void enviarMensaje(String mensaje) {
         ConnectionFactory factory = new ConnectionFactory();

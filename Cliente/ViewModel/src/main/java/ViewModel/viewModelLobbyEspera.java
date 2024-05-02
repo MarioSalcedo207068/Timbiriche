@@ -33,9 +33,9 @@ public class viewModelLobbyEspera implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == lobbyEspera.btnAceptar) {
-            //ESTO SE SOLUCIONA CON EVENTOS
-            viewModelTablero = new viewModelTablero(0, gestor);
-            viewModelTablero.iniciar();
+            //ESTO SE SOLUCIONA CON ???
+            //viewModelTablero = new viewModelTablero(0, gestor);
+            //viewModelTablero.iniciar();
             lobbyEspera.dispose();
         } if (e.getSource() == lobbyEspera.btnSalir) {
             viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);

@@ -9,17 +9,22 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import java.util.ArrayList;
+import java.util.List;
+import observador.IObservable;
+import observador.IObservador;
 //import controlador.Controlador;
 /**
  *
  * @author salce
  */
-public class MessageReceiver {
+public class MessageReceiver implements IObservable{
     
 private final static String EXCHANGE_NAME = "exchange-timbiriche";
     private final static String ROUTING_KEY = "model";
     private final static String QUEUE_NAME = "queue-model";
     private final static MessageSender SENDER = new MessageSender();
+    private List<IObservador> observadores = new ArrayList<>();
 
     public void iniciarConsumidor() {
         ConnectionFactory factory = new ConnectionFactory();
@@ -43,7 +48,7 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
                 System.out.println(" [x] Recibido desde el servidor: '" + message + "'");
                 // Implementa la lógica para procesar el mensaje aquí
                 //new Controlador().procesarMensaje(message);
-
+                actualizarTodos(message);
             };
 
             channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> {
@@ -52,6 +57,17 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
 
         }
 
+    }
+        @Override
+    public void actualizarTodos(String mensajeBody) {
+        for (IObservador observador : observadores) {
+            observador.procesarMensaje(mensajeBody);
+        }
+    }
+
+    @Override
+    public void agregarObservador(IObservador observador) {
+        this.observadores.add(observador);
     }
 
 }

@@ -1,5 +1,5 @@
 
-package Dominio;
+package formato;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,8 +12,8 @@ public class Mensaje {
     private String tipo;
     @SerializedName("objeto")
     private Object object;
-    @SerializedName("distinatario")
-    private String distinatario = "jugadores";
+    @SerializedName("destinatario")
+    private String destinatario = "jugadores";
     
     /**
      * Método constructor base de la clase.
@@ -68,7 +68,7 @@ public class Mensaje {
      * @return Cadena con el destinatario.
      */
     public String getDistinatario() {
-        return distinatario;
+        return destinatario;
     }
     
     

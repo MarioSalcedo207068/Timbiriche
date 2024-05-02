@@ -4,36 +4,13 @@
  */
 package View;
 
-import gestor.Gestor;
-import observador.IObservador;
 
 /**
  *
  * @author salce
  */
-public class PartidaNueva extends javax.swing.JFrame implements IObservador {
+public class PartidaNueva extends javax.swing.JFrame {
 
-    private Gestor gestor;
-    //private GestorPartidaNueva gestorPartidaNueva;
-
-    /**
-     * Creates new form PartidaNueva
-     */
-    public PartidaNueva() {
-        initComponents();
-        //this.gestorPartidaNueva = new GestorPartidaNueva();
-    }
-
-    public void setCargarInfo(Gestor gestor) {
-        this.gestor = gestor;
-        playerlabel.setText(gestor.getJugadorPrincipal().getName());
-    }
-
-    @Override
-    public void actualizar() {
-        //this.gestorPartidaNueva.cargarJugadores(this, gestor);
-        this.repaint();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

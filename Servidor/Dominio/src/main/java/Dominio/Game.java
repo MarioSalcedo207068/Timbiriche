@@ -14,10 +14,14 @@ public class Game {
     private List<Player> players=new ArrayList<Player>();
     private Board board;
     
-    public void startGame(){};
-    public void endGame(){};
-    public void addPlayer(Player player){};
-    public void leaveGame(){};
+    public void startGame(){}
+    
+    public void endGame(){}
+    
+    public void addPlayer(Player player){
+    this.addPlayer(player);
+    }
+    public void leaveGame(){}
 
     /**
      * Constructor privado para evitar crear otra instancia fuera de la clase.

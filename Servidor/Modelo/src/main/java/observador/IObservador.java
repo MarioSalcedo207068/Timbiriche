@@ -11,6 +11,6 @@ package observador;
  */
 public interface IObservador {
 
-    public void actualizar();
+    void procesarMensaje(String mensajeBody);
 
 }

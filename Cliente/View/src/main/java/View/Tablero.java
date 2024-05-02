@@ -16,19 +16,12 @@ import javax.swing.border.Border;
  */
 public class Tablero extends javax.swing.JFrame {
 
-    private gestor.Gestor gestor;
     
     /**
      * Creates new form Tablero
      */
     public Tablero() {
         initComponents();
-    }
-
-    public Tablero(gestor.Gestor gestor) {
-        initComponents();
-        this.gestor = gestor;
-        cargarJugadores();
     }
 
     public void cargarTablero(JPanel panelTablero) {
@@ -41,39 +34,6 @@ public class Tablero extends javax.swing.JFrame {
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
     }
-
-    private void cargarJugadores() {
-
-        for (int i = 0; i < gestor.getJugadores().size(); i++) {
-            System.out.println(i);
-        }
-        this.imgPlayer1.setIcon(gestor.getJugadores().get(0).getIcon());
-        this.txtPlayer1.setText(gestor.getJugadores().get(0).getName());
-        //Border borde = BorderFactory.createLineBorder(gestor.getJugadores().get(0).getColor(), 3);
-        
-        //this.imgPlayer1.setBorder(borde);
-        if (gestor.getJugadores().size() == 2) {
-            //imgPlayer2.setIcon(gestor.getJugadores().get(1).getIcono());
-            txtPlayer2.setText(gestor.getJugadores().get(1).getName());
-            //borde = BorderFactory.createLineBorder(gestor.getJugadores().get(1).getColor(), 3);
-            //this.imgPlayer2.setBorder(borde);
-        }
-        if (gestor.getJugadores().size() == 3) {
-            imgPlayer3.setIcon(gestor.getJugadores().get(2).getIcon());
-            txtPlayer3.setText(gestor.getJugadores().get(2).getName());
-            //borde = BorderFactory.createLineBorder(gestor.getJugadores().get(2).getColor(), 3);
-            //this.imgPlayer3.setBorder(borde);
-        }
-        if (gestor.getJugadores().size() == 4) {
-            imgPlayer4.setIcon(gestor.getJugadores().get(3).getIcon());
-            txtPlayer4.setText(gestor.getJugadores().get(3).getName());
-           // borde = BorderFactory.createLineBorder(gestor.getJugadores().get(3).getColor(), 3);
-            //this.imgPlayer4.setBorder(borde);
-        }
-    }
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

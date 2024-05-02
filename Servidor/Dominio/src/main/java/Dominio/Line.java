@@ -15,7 +15,7 @@ public class Line {
     private Dot start;
     @SerializedName("end")
     private Dot end;
-    @SerializedName("color")
+    //@SerializedName("color")
     private String color;
 
     /**

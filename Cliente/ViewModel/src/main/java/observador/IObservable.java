@@ -8,7 +8,10 @@ package observador;
  *
  * @author Daniel Alameda
  */
-public interface IObservadorEvento {
+public interface IObservable {
 
-    public void nuevoMensajeRecibido(String mensaje);
+    public void actualizarTodos(String mensajeBody);
+
+    public void agregarObservador(IObservador observador);
 }
+

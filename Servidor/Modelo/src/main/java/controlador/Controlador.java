@@ -5,19 +5,20 @@
 package controlador;
 
 import Dominio.Dot;
-import Dominio.Mensaje;
 import Dominio.Player;
 import GestorJugador.GestorCuenta;
 import GestorJugador.IGestorCuenta;
 import com.google.gson.Gson;
 import endpoint.MessageSender;
+import formato.Mensaje;
 import java.util.List;
+import observador.IObservador;
 
 /**
  *
  * @author salce
  */
-public class Controlador {
+public class Controlador implements IObservador {
     
     private final static Gson GSON = new Gson();
     //Tablero data
@@ -32,9 +33,12 @@ public class Controlador {
         this.gestorElementosGraficos = new GestorElementosGraficos.GestorElementosGraficos();
     }
     
+    @Override
     public void procesarMensaje(String mensajeBody) {
         Mensaje mensaje = GSON.fromJson(mensajeBody, Mensaje.class);
+        
         if (mensaje.getTipo() == "agregar-jugador") {
+            Player player = GSON.fromJson(GSON.toJsonTree(mensaje.getObject()), Player.class);
             gestorCuenta.addPlayer((Player) mensaje.getObject());
             
             Mensaje mensajeRespuesta = new Mensaje("lista-jugadores", gestorCuenta.getListPlayer());
@@ -44,7 +48,7 @@ public class Controlador {
             mensajeSender.enviarMensaje(respuestaJson);
         }
         
-        if (mensaje.getTipo() == "calcularPuntosTablero") {
+        /*if (mensaje.getTipo() == "calcularPuntosTablero") {
             List<Integer> puntosTablero = (List<Integer>) mensaje.getObject();
             List<Dot> puntos = 
             gestorElementosGraficos.calcularPuntosTablero
@@ -56,7 +60,7 @@ public class Controlador {
             //envía a través del rabbit sender
             mensajeSender.enviarMensaje(respuestaJson);
             
-        }
+        }*/
     }
     
     

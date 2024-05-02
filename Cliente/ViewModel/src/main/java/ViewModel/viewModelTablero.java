@@ -19,9 +19,9 @@ import observador.IObservador;
  *
  * @author salce
  */
-public class viewModelTablero implements ActionListener{
+public class viewModelTablero {
 
-    Tablero tablero;
+/*    Tablero tablero;
     Configuracion configuracion;
     TableroPanel tableroPanel;
     Gestor gestor;
@@ -70,6 +70,6 @@ public class viewModelTablero implements ActionListener{
             }
         }
 
-    }
+    }*/
 
 }

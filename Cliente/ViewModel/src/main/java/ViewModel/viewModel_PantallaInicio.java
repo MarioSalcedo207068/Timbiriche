@@ -23,12 +23,12 @@ public class viewModel_PantallaInicio implements ActionListener{
         public viewModel_PantallaInicio(Gestor gestor) {
         this.gestor = gestor;
         
-        if (gestor != null && gestor.getJugadorPrincipal() != null) {
+/*        if (gestor != null && gestor.getJugadorPrincipal() != null) {
             System.out.println(gestor.getJugadorPrincipal().getName());
         } else {
             // Maneja el caso en que gestor es null
             System.out.println("Gestor es null");
-        }
+        }*/
         this.pantallaInicio = new PantallaInicio();
 
         this.pantallaInicio.btnNuevaPartida.addActionListener(this);

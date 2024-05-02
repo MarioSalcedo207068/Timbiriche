@@ -29,21 +29,21 @@ public class viewModel_PartidaNueva implements ActionListener {
     public viewModel_PartidaNueva(Gestor gestor) {
         this.gestor = gestor;
         this.partidaNueva = new PartidaNueva();
-        this.gestor.agregarObservador((IObservador) partidaNueva);
-        this.generarEventosConfiguracion();
+        //this.gestor.agregarObservador((IObservador) partidaNueva);
+        //this.generarEventosConfiguracion();
 
     }
 
-    private void generarEventosConfiguracion() {
+    /*private void generarEventosConfiguracion() {
         this.partidaNueva.btn10.addActionListener(this);
         this.partidaNueva.btn20.addActionListener(this);
         this.partidaNueva.btn30.addActionListener(this);
         this.partidaNueva.btnStart.addActionListener(this);
-    }
+    }*/
 
     public void iniciarPantalla() {
         //this.gestor.iniciarJugador();
-        this.partidaNueva.setCargarInfo(this.gestor);
+        //this.partidaNueva.setCargarInfo(this.gestor);
         this.partidaNueva.setVisible(true);
         //this.gestor.mandarJugadorPrincipal();
 
@@ -61,8 +61,8 @@ public class viewModel_PartidaNueva implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Seleccione una dimensión primero");
             } else {
                 System.out.println("COMENZAR");
-                this.viewModelTablero = new viewModelTablero(dimension, gestor);
-                viewModelTablero.iniciar();
+                //this.viewModelTablero = new viewModelTablero(dimension, gestor);
+                //viewModelTablero.iniciar();
                 partidaNueva.dispose();
             }
         }
@@ -70,8 +70,8 @@ public class viewModel_PartidaNueva implements ActionListener {
 
     public void comenzarPartidaNueva(boolean listo) {
         if (listo == true) {
-            this.viewModelTablero = new viewModelTablero(dimension, gestor);
-            viewModelTablero.iniciar();
+            //this.viewModelTablero = new viewModelTablero(dimension, gestor);
+            //viewModelTablero.iniciar();
             partidaNueva.dispose();
 
         }

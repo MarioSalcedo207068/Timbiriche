@@ -11,20 +11,21 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 import java.util.ArrayList;
 import java.util.List;
-import observador.IObservableEvento;
-import observador.IObservadorEvento;
+import observador.IObservable;
+import observador.IObservador;
+
 
 /**
  *
  * @author salce
  */
-public class MessageReceiver implements IObservableEvento{
-    
-    private List<IObservadorEvento> observadores = new ArrayList<>();
-    
+public class MessageReceiver implements IObservable {
+
     private final static String EXCHANGE_NAME = "exchange-jugadores";
+    private List<IObservador> observadores = new ArrayList<>();
 
     public void iniciarCOnsumidor() {
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         factory.setUsername("root");
@@ -42,8 +43,10 @@ public class MessageReceiver implements IObservableEvento{
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), "UTF-8");
+
                 System.out.println(" [x] Recibido desde lado del Cliente: '" + message + "'");
                 // Implementa la lógica para procesar el mensaje aquí
+                actualizarTodos(message);
             };
 
             channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
@@ -54,20 +57,17 @@ public class MessageReceiver implements IObservableEvento{
     }
 
     @Override
-    public void actualizarTodos(String evento) {
-                for (IObservadorEvento observador : observadores) {
-            observador.nuevoMensajeRecibido(evento);
+    public void actualizarTodos(String mensajeBody) {
+        System.out.println("hola desde actualizar");
+        for (IObservador observador : observadores) {
+            observador.procesarMensaje(mensajeBody);
         }
     }
 
     @Override
-    public void agregarObservador(IObservadorEvento observador) {
-                this.observadores.add(observador);
-    }
-
-    @Override
-    public void eliminarObservador(IObservadorEvento observador) {
-        this.observadores.remove(observador);
+    public void agregarObservador(IObservador observador) {
+        System.out.println("hola desde agregar");
+        this.observadores.add(observador);
     }
 
 }

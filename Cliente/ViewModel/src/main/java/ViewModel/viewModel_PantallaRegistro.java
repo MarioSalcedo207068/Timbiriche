@@ -4,20 +4,12 @@
  */
 package ViewModel;
 
-import Dominio.Mensaje;
 import Dominio.Player;
 import GestorJugador.GestorCuenta;
 import View.Registro;
 import gestor.Gestor;
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -72,7 +64,7 @@ public class viewModel_PantallaRegistro implements ActionListener {
                 player.setColor(color);
                 System.out.println(color.toString());
                 gestor.agregarJugador(player);
-                this.gestor.setJugadorPrincipal(player);                    
+                //this.gestor.setJugadorPrincipal(player);                    
                 viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
                 viewModel_PantallaInicio.iniciarPantalla();
                 pantallaRegistro.dispose();

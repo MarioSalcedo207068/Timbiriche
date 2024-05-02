@@ -11,10 +11,8 @@ package observador;
  */
 public interface IObservable {
 
-    public void actualizarTodos();
+    public void actualizarTodos(String mensajeBody);
 
     public void agregarObservador(IObservador observador);
-
-    public void eliminarObservador(IObservador observador);
 
 }

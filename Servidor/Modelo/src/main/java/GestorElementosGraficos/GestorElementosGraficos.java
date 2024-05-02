@@ -7,19 +7,18 @@ package GestorElementosGraficos;
 import Dominio.Box;
 import Dominio.Dot;
 import Dominio.Line;
-import Dominio.Mensaje;
 import Dominio.Player;
+import formato.Mensaje;
 import gestor.Gestor;
 import java.util.ArrayList;
 import java.util.List;
-import observador.IObservable;
 import observador.IObservador;
 
 /**
  *
  * @author salce
  */
-public class GestorElementosGraficos implements IObservable{
+public class GestorElementosGraficos {
     
     
     List<Line> lineas = new ArrayList<>();
@@ -67,20 +66,20 @@ public class GestorElementosGraficos implements IObservable{
         public void vaciarPuntos() {
         this.puntoA = null;
         this.puntoB = null;
-        actualizarTodos();
+        //actualizarTodos();
     }
 
     public void addLinea(Line linea) {
         if (!validarLineaExistente(linea)) {
             validarCuadrado(linea);
             this.lineas.add(linea);
-            gestor.enviarEvento(new Mensaje("linea", linea));
+            //gestor.enviarEvento(new Mensaje("linea", linea));
         }
     }
     
     public void addCuadrado(Box cuadrado) {
         this.cuadrados.add(cuadrado);
-        gestor.enviarEvento(new Mensaje("cuadrado", cuadrado));
+        //gestor.enviarEvento(new Mensaje("cuadrado", cuadrado));
     }
     
     public void validarCuadrado(Line linea) {
@@ -200,7 +199,7 @@ public class GestorElementosGraficos implements IObservable{
                     && puntoValidar.getY() <= punto.getY() + 10) {
                 if (puntoA == null) {
                     puntoA = punto;
-                    actualizarTodos();
+                    //actualizarTodos();
                 } else if (puntoB == null) {
 
                     puntoB = punto;
@@ -220,7 +219,7 @@ public class GestorElementosGraficos implements IObservable{
         Double distanciaX = Math.pow((puntoB.getX() - puntoA.getX()), 2);
         Double distanciaY = Math.pow((puntoB.getY() - puntoA.getY()), 2);
         this.distanciaPuntos = Math.sqrt(distanciaX + distanciaY);
-        gestor.enviarEvento(new Mensaje("distancia", distanciaPuntos));
+        //gestor.enviarEvento(new Mensaje("distancia", distanciaPuntos));
     }
         
             private boolean validarLinea() {
@@ -234,7 +233,7 @@ public class GestorElementosGraficos implements IObservable{
 
             Line linea = acomodarCordenadas(new Line(puntoA, puntoB));
             linea.setColor(jugadorPrincipal.getColor());
-            this.gestor.enviarEvento(new Mensaje("linea", linea));
+            //this.gestor.enviarEvento(new Mensaje("linea", linea));
             return true;
         } else {
             return false;
@@ -257,23 +256,5 @@ public class GestorElementosGraficos implements IObservable{
             }
         }
         return false;
-    }
-        
-
-    @Override
-    public void actualizarTodos() {
-        for (IObservador observadores : observadoresPantalla) {
-            observadores.actualizar();
-        }
-    }
-
-    @Override
-    public void agregarObservador(IObservador observador) {
-        this.observadoresPantalla.add(observador);
-    }
-
-    @Override
-    public void eliminarObservador(IObservador observador) {
-        this.observadoresPantalla.remove(observador);
     }
 }
