@@ -1,17 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Dominio;
 
 /**
- *
- * @author salce
+ * Clase para representar la clase Proxy para el tablero dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class ProxyBoard /*implements InterfaceBoard*/{
 
     private Board board;
 
+    /**
+     * Método constructor base de la clase.
+     */
     public ProxyBoard() {
     }
     

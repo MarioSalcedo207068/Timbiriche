@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Dominio;
 
 import java.awt.Color;
@@ -11,8 +8,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- *
- * @author salce
+ * Clase para representar los cuadrados dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class Box {
     private Dot pointA;
@@ -21,6 +18,14 @@ public class Box {
     private Dot pointD;
     private String color;
 
+    /**
+     * Método constructor con parámetros de la clase.
+     * @param pointA Primer punto que conforma al cuadrado.
+     * @param pointB Segundo punto que conforma al cuadrado.
+     * @param pointC Tercer punto que conforma al cuadrado.
+     * @param pointD Cuarto punto que conforma al cuadrado.
+     * @param color Color al cual pertenece el cuadrado.
+     */
     public Box(Dot pointA, Dot pointB, Dot pointC, Dot pointD, String color) {
         
         List<Dot> dots = new ArrayList<>();
@@ -42,26 +47,50 @@ public class Box {
     
     
 
+    /**
+     * Método para obtener el primer punto que conforma al cuadrado.
+     * @return Objeto tipo Dot con la información del primer punto. 
+     */
     public Dot getPointA() {
         return pointA;
     }
 
+    /**
+     * Método para obtener el segundo punto que conforma al cuadrado.
+     * @return Objeto tipo Dot con la información del segundo punto. 
+     */
     public Dot getPointB() {
         return pointB;
     }
 
+        /**
+     * Método para obtener el tercer punto que conforma al cuadrado.
+     * @return Objeto tipo Dot con la información del tercer punto. 
+     */
     public Dot getPointC() {
         return pointC;
     }
 
+    /**
+     * Método para obtener el cuarto punto que conforma al cuadrado.
+     * @return Objeto tipo Dot con la información del cuarto punto. 
+     */    
     public Dot getPointD() {
         return pointD;
     }
 
+    /**
+     * Método para obtener el color que conforma al cuadrado.
+     * @return Cadena con el color.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Método para establecer el color del cuadrado.
+     * @param color Cadena con el color que tendrá el cuadrado.
+     */
     public void setColor(String color) {
         this.color = color;
     }

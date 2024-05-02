@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dominio;
 
 import com.google.gson.annotations.SerializedName;
@@ -16,27 +12,46 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author salce
+ * Clase para representar al jugador dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class Player {
+
     @SerializedName("name")
     private String name;
-    
+
     private String color;
     @SerializedName("pathImage")
     private String pathImage;
     private int score;
 
+    /**
+     * Método constructor base de la clase.
+     */
     public Player() {
     }
 
+    /**
+     * Método constructor con parámetros de la clase.
+     *
+     * @param name Cadena con el nombre del jugador.
+     * @param pathImage Cadena con la dirección de la imágen a usar.
+     * @param color Cadena con el color del jugador.
+     */
     public Player(String name, String pathImage, String color) {
         this.name = name;
         this.color = color;
         this.pathImage = pathImage;
     }
-    
+
+    /**
+     * Método constructor con parámetros de la clase.
+     *
+     * @param name Cadena con el nombre del jugador.
+     * @param pathImage Cadena con la dirección de la imágen a usar.
+     * @param color Cadena con el color del jugador.
+     * @param score Entero con la puntuación del jugador.
+     */
     public Player(String name, String color, String pathImage, int score) {
         this.name = name;
         this.color = color;
@@ -44,53 +59,105 @@ public class Player {
         this.score = score;
     }
 
+    /**
+     * Método constructor con parámetros de la clase.
+     *
+     * @param name Cadena con el nombre del jugador.
+     */
     public Player(String name) {
         this.name = name;
     }
-    
-    private int addScore(int score){
+
+    /**
+     * Método para añadir cantidad de puntos a la ya establecida del jugador.
+     *
+     * @param score Entero con la puntuación a añadir.
+     * @return Entero con el resultado total de puntos.
+     */
+    private int addScore(int score) {
         return this.score;
     }
 
+    /**
+     * Método que regresa el nombre del jugador.
+     *
+     * @return Cadena con el nombre del jugador.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Método para establecer el nombre del jugador.
+     *
+     * @param name Cadena con el nombre a establecer.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Método que regresa el color del jugador.
+     *
+     * @return Cadena con el color del jugador.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Método para establecer el color del jugador.
+     *
+     * @param color Cadena con el color a establecer.
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
+    /**
+     * Método que regresa la dirección de la imágen del jugador.
+     *
+     * @return Cadena con la dirección de la imágen del jugador.
+     */
     public String getPathImage() {
         return pathImage;
     }
 
+    /**
+     * Método para establecer la dirección de la imágen del jugador.
+     *
+     * @param pathImage Cadena la dirección de la imágen a establecer.
+     */
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
     }
 
+    /**
+     * Método que regresa la puntuación del jugador.
+     *
+     * @return Entero con la puntuación del jugador.
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Método para establecer la puntuación del jugador.
+     *
+     * @param score Entero con la puntiación a establecer.
+     */
     public void setScore(int score) {
         this.score = score;
     }
-    
-    
+
     /**
-     * Obtiene el path url y hace un scale para que pueda usarse como imagen del jugador
+     * Método que obtiene el path url y hace un scale para que pueda usarse como
+     * imagen del jugador
+     *
+     * @return Objeto tipo Icon con la imágen ya escalada.
      */
-        public Icon getIcon() {
-        try 
-            {
+    public Icon getIcon() {
+        try {
             URL imageUrl = getClass().getClassLoader().getResource(this.pathImage);
             Image originalImage = ImageIO.read(imageUrl);
 
@@ -98,14 +165,17 @@ public class Player {
             Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
 
             return new ImageIcon(resizedImage);
-            
-            } catch (IOException e) 
-            {
+
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "No se cargó la imágen: " + e.getMessage());
             return null;
-            }
+        }
     }
-
+    
+    /**
+     * Método para general el código hash de la clase.
+     * @return Entero con el código Hash de la clase. 
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -116,6 +186,11 @@ public class Player {
         return hash;
     }
 
+    /**
+     * Método para determinar si el objeto entrante es el mismo al que fue usado.
+     * @param obj Objeto a comparar.
+     * @return Boolean con la respuesta de la comparativa.
+     */    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -139,12 +214,14 @@ public class Player {
         }
         return Objects.equals(this.color, other.color);
     }
-
+    
+    /**
+     * Método para transformar los datos del objeto a una sola cadena. 
+     * @return Cadena con los datos del objeto, incluyendo las coordenadas X y Y.
+     */
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", color=" + color + ", pathImage=" + pathImage + ", score=" + score + '}';
     }
-        
-        
-    
+
 }

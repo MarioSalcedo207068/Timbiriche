@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Dominio;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author salce
+ * Clase para representar el juego dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class Game {
     //Declarando instancia de juego
@@ -23,7 +20,7 @@ public class Game {
     public void leaveGame(){};
 
     /**
-     * Constructor privado para evitar crear otra instancia fuera de la clase
+     * Constructor privado para evitar crear otra instancia fuera de la clase.
      */
     private Game(){}
     
@@ -38,10 +35,18 @@ public class Game {
         return instance;
     }
     
+    /**
+     * Método para obtener la lista de jugadores que conforman el juego.
+     * @return Objeto Lista de tipo Player con los jugadores activos.
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * Método para establecer la lista de jugadores dentro del juego.
+     * @param players Objeto Lista de tipo Player con los jugadores a insertar.
+     */
     public void setPlayers(List<Player> players) {
         this.players = players;
     }

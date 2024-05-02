@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package com.mycompany.dominio;
 
 /**
- *
- * @author salce
+ * Clase para representar el dominio dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class Dominio {
 
