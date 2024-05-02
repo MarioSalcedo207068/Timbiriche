@@ -13,6 +13,17 @@ import java.util.List;
 public class GestorLinea {
 
         List<Line> lineas = new ArrayList<>();
+
+    public List<Line> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<Line> lineas) {
+        this.lineas = lineas;
+    }
         
+     public void addLinea(Line line){
+         lineas.add(line);
+     }
         
 }
