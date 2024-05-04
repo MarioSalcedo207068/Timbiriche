@@ -4,8 +4,14 @@
 
 package com.mycompany.viewmodel;
 
+import Dominio.Game;
+import ViewModel.viewModelLobbyEspera;
+import ViewModel.viewModel_PantallaInicio;
 import ViewModel.viewModel_PantallaRegistro;
+import ViewModel.viewModel_PartidaNueva;
+import controlador.Controlador;
 import endpoint.MessageReceiver;
+import gestor.Gestor;
 
 /**
  *
@@ -15,9 +21,21 @@ public class ViewModel {
 
     public static void main(String[] args) {
         System.out.println("Iniciando jugador");
-        MessageReceiver mensajeReceiver = new MessageReceiver();
-        new viewModel_PantallaRegistro().inciarPantalla();
-        
+        Game.getInstance();
+        Gestor.getInstance();
+
+        Controlador controlador = new Controlador();
+        MessageReceiver mensajeReceiver = new MessageReceiver(controlador);
         mensajeReceiver.iniciarCOnsumidor();
+
+        viewModel_PantallaInicio viewModel_PantallaInicio = new viewModel_PantallaInicio();
+        viewModel_PartidaNueva viewModel_PartidaNueva = new viewModel_PartidaNueva();
+        viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio);
+
+        controlador.agregarObservador(lobbyEspera);
+
+        viewModel_PantallaInicio.setLobbyEspera(lobbyEspera);
+        viewModel_PantallaInicio.setViewModel_PartidaNueva(viewModel_PartidaNueva);
+        new viewModel_PantallaRegistro(viewModel_PantallaInicio).inciarPantalla();
     }
 }

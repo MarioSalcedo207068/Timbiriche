@@ -18,8 +18,9 @@ public class Game {
     
     public void endGame(){}
     
-    public void addPlayer(Player player){
-    this.addPlayer(player);
+    public Player addPlayer(Player player){
+    this.players.add(player);
+    return player;
     }
     public void leaveGame(){}
 

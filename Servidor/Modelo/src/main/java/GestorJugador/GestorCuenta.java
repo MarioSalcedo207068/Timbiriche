@@ -9,7 +9,6 @@ import javax.swing.Icon;
 import observador.IObservador;
 
 
-
 public class GestorCuenta implements IGestorCuenta {
     
         private List<IObservador> observadoresPantalla;

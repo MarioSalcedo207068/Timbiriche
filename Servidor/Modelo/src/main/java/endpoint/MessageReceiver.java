@@ -58,7 +58,7 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
         }
 
     }
-        @Override
+    @Override
     public void actualizarTodos(String mensajeBody) {
         for (IObservador observador : observadores) {
             observador.procesarMensaje(mensajeBody);

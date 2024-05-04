@@ -8,12 +8,9 @@ import Dominio.Box;
 import Dominio.Dot;
 import Dominio.Line;
 import Dominio.Player;
-import formato.Mensaje;
-import gestor.Gestor;
 import java.util.ArrayList;
 import java.util.List;
 import observador.IObservador;
-
 /**
  *
  * @author salce
@@ -24,7 +21,7 @@ public class GestorElementosGraficos {
     List<Line> lineas = new ArrayList<>();
     List<Box> cuadrados = new ArrayList<>();
     //ProcesarEvento evento = new ProcesarEvento(this);
-    gestor.Gestor gestor = new Gestor();
+    
     List<Player> jugadores = new ArrayList<>();
     Double distanciaPuntos;
     private List<Dot> puntos;
@@ -232,7 +229,7 @@ public class GestorElementosGraficos {
         if (distancia.equals(distanciaPuntos)) {
 
             Line linea = acomodarCordenadas(new Line(puntoA, puntoB));
-            linea.setColor(jugadorPrincipal.getColor());
+            linea.setColor(jugadorPrincipal.getColor().toString());
             //this.gestor.enviarEvento(new Mensaje("linea", linea));
             return true;
         } else {

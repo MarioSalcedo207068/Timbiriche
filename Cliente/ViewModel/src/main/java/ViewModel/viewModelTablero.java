@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
-import observador.IObservador;
+import observador.IObservadorPantalla;
 
 /**
  *
@@ -38,7 +38,7 @@ public class viewModelTablero {
         this.tableroPanel.cargarInformacion(gestor);
         this.configuracion = new Configuracion();
 
-        gestor.agregarObservador((IObservador) tableroPanel);
+        gestor.agregarObservador((IObservadorPantalla) tableroPanel);
 
         this.viewModelPanelTablero = new viewModelPanelTablero(tablero,
                 tableroPanel, gestor);

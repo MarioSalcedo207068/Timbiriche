@@ -9,7 +9,6 @@ import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import observador.IObservador;
 
 /**
  *
@@ -18,7 +17,7 @@ import observador.IObservador;
 public class viewModel_PartidaNueva implements ActionListener {
 
     PartidaNueva partidaNueva;
-    Gestor gestor;
+    Gestor gestor = Gestor.getInstance();
     Integer dimension;
     viewModelTablero viewModelTablero;
 
@@ -29,7 +28,7 @@ public class viewModel_PartidaNueva implements ActionListener {
     public viewModel_PartidaNueva(Gestor gestor) {
         this.gestor = gestor;
         this.partidaNueva = new PartidaNueva();
-        //this.gestor.agregarObservador((IObservador) partidaNueva);
+        //this.gestor.agregarObservador((IObservadorPantalla) partidaNueva);
         //this.generarEventosConfiguracion();
 
     }
