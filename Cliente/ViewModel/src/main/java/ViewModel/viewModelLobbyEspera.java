@@ -23,8 +23,9 @@ public class viewModelLobbyEspera implements ActionListener, IObservadorPantalla
     Game game = Game.getInstance();
     
     
-    public viewModelLobbyEspera(viewModel_PantallaInicio viewModel_PantallaInicio) {
+    public viewModelLobbyEspera(viewModel_PantallaInicio viewModel_PantallaInicio, viewModelTablero viewModelTablero) {
         this.viewModel_PantallaInicio = viewModel_PantallaInicio;
+        this.viewModelTablero = viewModelTablero;
         this.lobbyEspera = new LobbyEspera();
         this.lobbyEspera.btnAceptar.addActionListener(this);
         this.lobbyEspera.btnSalir.addActionListener(this);
@@ -65,13 +66,18 @@ public class viewModelLobbyEspera implements ActionListener, IObservadorPantalla
     public void iniciarPantalla(){
         agregarJugaresPantalla();
         this.lobbyEspera.setVisible(true);
+        
+    }
+    public void iniciarPantallaTablero(){
+        agregarJugaresPantalla();
+        //this.viewModelTablero.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == lobbyEspera.btnAceptar) {
             //últimos cambios
-            
+            viewModelTablero.iniciarPantalla();
             lobbyEspera.dispose();
         } if (e.getSource() == lobbyEspera.btnSalir) {
             viewModel_PantallaInicio.iniciarPantalla();

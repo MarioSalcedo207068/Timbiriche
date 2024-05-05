@@ -6,6 +6,7 @@ package com.mycompany.viewmodel;
 
 import Dominio.Game;
 import ViewModel.viewModelLobbyEspera;
+import ViewModel.viewModelTablero;
 import ViewModel.viewModel_PantallaInicio;
 import ViewModel.viewModel_PantallaRegistro;
 import ViewModel.viewModel_PartidaNueva;
@@ -30,9 +31,15 @@ public class ViewModel {
 
         viewModel_PantallaInicio viewModel_PantallaInicio = new viewModel_PantallaInicio();
         viewModel_PartidaNueva viewModel_PartidaNueva = new viewModel_PartidaNueva();
-        viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio);
+        //agregado
+        viewModelTablero viewModelTablero = new viewModelTablero();
+        //--Editado
+        //viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio);
+        viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio, viewModelTablero);
+        
 
         controlador.agregarObservador(lobbyEspera);
+        controlador.agregarObservador(viewModelTablero);
 
         viewModel_PantallaInicio.setLobbyEspera(lobbyEspera);
         viewModel_PantallaInicio.setViewModel_PartidaNueva(viewModel_PartidaNueva);

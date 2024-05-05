@@ -4,6 +4,7 @@
  */
 package ViewModel;
 
+import Dominio.Game;
 import View.PantallaInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ public class viewModel_PantallaInicio implements ActionListener{
     private PantallaInicio pantallaInicio;
     private viewModel_PartidaNueva viewModel_PartidaNueva;
     private viewModelLobbyEspera lobbyEspera;
+    Game game = Game.getInstance();
     
         public viewModel_PantallaInicio() {
             
