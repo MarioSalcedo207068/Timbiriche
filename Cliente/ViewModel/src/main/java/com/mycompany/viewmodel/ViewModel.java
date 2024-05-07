@@ -35,6 +35,18 @@ public class ViewModel {
         viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio, viewModelTablero);
 >>>>>>> d5e76cb (ajustes v2)
         
+<<<<<<< HEAD
         mensajeReceiver.iniciarCOnsumidor();
+=======
+
+        controlador.agregarObservador(lobbyEspera);
+        controlador.agregarObservador(viewModelTablero);
+        controlador.agregarObservador(viewModel_PartidaNueva);
+        
+
+        viewModel_PantallaInicio.setLobbyEspera(lobbyEspera);
+        viewModel_PantallaInicio.setViewModel_PartidaNueva(viewModel_PartidaNueva);
+        new viewModel_PantallaRegistro(viewModel_PantallaInicio).inciarPantalla();
+>>>>>>> 9b1be31 (Pruebas v2.0)
     }
 }

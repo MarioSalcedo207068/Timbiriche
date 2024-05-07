@@ -122,8 +122,10 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
     public void actualizarPantalla() {
         agregarJugaresPantalla();
         panelTablero.setGame(game);
+        tablero.cargarTablero(panelTablero);
         tablero.repaint();
         panelTablero.repaint();
+        tablero.panelPrincipal.repaint();
     }
     
         public void setTablero(Tablero tablero) {

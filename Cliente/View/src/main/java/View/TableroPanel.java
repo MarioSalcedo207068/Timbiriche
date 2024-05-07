@@ -8,6 +8,7 @@ import Dominio.Box;
 import Dominio.Dot;
 import Dominio.Game;
 import Dominio.Line;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,19 +53,50 @@ public class TableroPanel extends javax.swing.JPanel {
        initComponents();
        
        this.game = game;
+       
+       repaint();
+        
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        dibujarPuntos(g);
     }
 
+    private void dibujarPuntos1(Graphics g) {
+        List<Dot> puntos = game.getBoard().getDots();
+        for (Dot punto : puntos) {
+            int posicionX = punto.getX();
+            int posicionY = punto.getY();
+            g.setColor(Color.WHITE);
+            g.fillOval(posicionX, posicionY, 10, 10);
+        }
+
+        if (PuntoA != null) {
+            g.setColor(Color.GREEN);
+            g.fillOval(PuntoA.getX(), PuntoA.getY(), 10, 10);
+        }
+
+        if (PuntoB != null) {
+            g.setColor(Color.GREEN);
+            g.fillOval(PuntoB.getX(), PuntoB.getY(), 10, 10);
+        }
+    }
+    
     @Override
     public void paint(Graphics g) {
         super.paint(g);
      //   dibujarLineas(g);
         //dibujarCuadrados(g);
         dibujarPuntos(g);
-}
+        dibujarPuntos1(g);
+    }
 
     private void dibujarPuntos(Graphics g) {
         gestor.dibujarPuntos(g, game.getBoard().getDots(),
-                getPuntoA(), getPuntoB());
+                game.getBoard().getDots().getFirst(),game.getBoard().getDots().getLast());
+        //getPuntoA(), getPuntoB());
 
     }
     //private void dibujarLineas(Graphics g) {
