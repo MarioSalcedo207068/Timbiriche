@@ -10,8 +10,8 @@ import java.util.List;
 import javax.swing.Icon;
 
 /**
- *
- * @author PC
+ * Interfaz que será heredada por el gestor de cuenta dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public interface IGestorCuenta 
 {

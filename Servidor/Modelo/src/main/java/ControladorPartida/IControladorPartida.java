@@ -5,8 +5,8 @@
 package ControladorPartida;
 
 /**
- *
- * @author salce
+ * Interfaz que será heredada por el controlador de partida dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public interface IControladorPartida {
     

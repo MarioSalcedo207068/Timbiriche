@@ -5,8 +5,8 @@
 package ControladorPartida;
 
 /**
- *
- * @author salce
+ * Clase para representar el controlador de partida dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class ControladorPartida implements IControladorPartida{
     

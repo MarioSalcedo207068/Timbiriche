@@ -7,8 +7,8 @@ import Dominio.Box;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *
- * @author santi
+ * Clase para representar el gestor de cuadrados dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class GestorCuadrado {
         

@@ -6,8 +6,8 @@
 package observador;
 
 /**
- *
- * @author salce
+ * Interfaz que será heredada por los observadores del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public interface IObservador {
 

@@ -15,12 +15,15 @@ import java.util.List;
 import observador.IObservador;
 
 /**
- *
- * @author salce
+ * Clase para representar el gestor de elementos gráficos dentro del proyecto
+ * Timbiriche.
+ * @author Equipo 01
  */
+
 public class GestorElementosGraficos {
     
     
+
     List<Line> lineas = new ArrayList<>();
     List<Box> cuadrados = new ArrayList<>();
     //ProcesarEvento evento = new ProcesarEvento(this);
@@ -32,20 +35,41 @@ public class GestorElementosGraficos {
     private Dot puntoB;
     private Player jugadorPrincipal;
     private List<IObservador> observadoresPantalla;
-    
-    
-        public List<Dot> getPuntos() {
+
+    /**
+     * Método para obtener los puntos almacenados en la lista de puntos.
+     *
+     * @return Lista tipo Dot con todos los puntos almacenados.
+     */
+    public List<Dot> getPuntos() {
         return puntos;
     }
 
+    /**
+     * Método para ingresar una lista de puntos, actualizando la lista de puntos
+     * almacenados.
+     *
+     * @param puntos Lista tipo Dot con la información de los puntos entrantes.
+     */
     public void setPuntos(List<Dot> puntos) {
         this.puntos = puntos;
     }
 
+    /**
+     * Método para obtener las líneas almacenadas en la lista de líneas.
+     *
+     * @return Lista tipo Line con todas las líneas almacenadas.
+     */
     public List<Line> getLineas() {
         return lineas;
     }
 
+    /**
+     * Método para ingresar una lista de líneas, actualizando la lista de líneas
+     * almacenadas.
+     *
+     * @param lineas Lista tipo Line con la información de las líneas entrantes.
+     */
     public void setLineas(List<Line> lineas) {
         this.lineas = lineas;
     }
@@ -54,21 +78,38 @@ public class GestorElementosGraficos {
         this.lineas.add(linea);
         actualizarTodos();
     }*/
-
+    /**
+     * Método que regresará la distancia entre dos puntos previamente
+     * establecidos.
+     *
+     * @return Double con la información exacta de la distancia.
+     */
     public Double getDistanciaPuntos() {
         return distanciaPuntos;
     }
 
+    /**
+     * Método para ingresar la distancia entre dos puntos específicos.
+     *
+     * @param distanciaPuntos Objeto tipo Double el cual representa
+     */
     public void setDistanciaPuntos(Double distanciaPuntos) {
         this.distanciaPuntos = distanciaPuntos;
     }
 
-        public void vaciarPuntos() {
+    /**
+     * Método para establecer los dos puntos (A y B) en nulo.
+     */
+    public void vaciarPuntos() {
         this.puntoA = null;
         this.puntoB = null;
         //actualizarTodos();
     }
 
+    /**
+     * Método para validar y añadir una línea a la lista de líneas del objeto.
+     * @param linea Objeto tipo Line el cual será validado y posteriormente agregado.
+     */
     public void addLinea(Line linea) {
         if (!validarLineaExistente(linea)) {
             validarCuadrado(linea);
@@ -76,12 +117,20 @@ public class GestorElementosGraficos {
             //gestor.enviarEvento(new Mensaje("linea", linea));
         }
     }
-    
+
+    /**
+     * Método para añadir un cuadrado a la lista de cuadrados del objeto.
+     * @param cuadrado Objeto tipo Box el cual será agregado.
+     */
     public void addCuadrado(Box cuadrado) {
         this.cuadrados.add(cuadrado);
         //gestor.enviarEvento(new Mensaje("cuadrado", cuadrado));
     }
-    
+
+    /**
+     * Método para validar un cuadrado en base a una línea entrante. 
+     * @param linea Objeto tipo Line el cual estará siendo validado constantemente.
+     */
     public void validarCuadrado(Line linea) {
         Dot puntoCSup;
         Dot puntoDSup;
@@ -177,8 +226,15 @@ public class GestorElementosGraficos {
 
         }
     }
-    
-        public List<Dot> calcularPuntosTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
+
+    /**
+     * Método para calcular e insertar los puntos totales a desplegar en el tablero.
+     * @param cantidadPuntos Objeto entero con la cantidad de puntos en el tablero.
+     * @param anchoTablero Objeto entero con el número de anchura en el tablero.
+     * @param altoTablero Objeto entero con el número de altura en el tablero.
+     * @return Lista de tipo Dot con todos los puntos a desplegar. 
+     */
+    public List<Dot> calcularPuntosTablero(int cantidadPuntos, int anchoTablero, int altoTablero) {
         List<Dot> puntos = new ArrayList<>();
         int espacioAltura = altoTablero / cantidadPuntos;
         int espacioAncho = anchoTablero / cantidadPuntos;
@@ -191,7 +247,13 @@ public class GestorElementosGraficos {
         }
         return puntos;
     }
-        public boolean validarPunto(Dot puntoValidar) {
+
+    /**
+     * Método para validar un punto específico insertado.
+     * @param puntoValidar Objeto tipo Dot el cual será validado.
+     * @return Boolean con la respuesta de la validación.
+     */
+    public boolean validarPunto(Dot puntoValidar) {
         for (Dot punto : getPuntos()) {
             if (puntoValidar.getX() >= punto.getX() - 10
                     && puntoValidar.getX() <= punto.getX() + 10
@@ -213,7 +275,11 @@ public class GestorElementosGraficos {
 
         return false;
     }
-            private void calcularDistancia() {
+
+    /**
+     * Método para calcular la distancia entre los puntos del objeto.
+     */
+    private void calcularDistancia() {
         Dot puntoA = this.puntos.get(0);
         Dot puntoB = this.puntos.get(1);;
         Double distanciaX = Math.pow((puntoB.getX() - puntoA.getX()), 2);
@@ -221,8 +287,12 @@ public class GestorElementosGraficos {
         this.distanciaPuntos = Math.sqrt(distanciaX + distanciaY);
         //gestor.enviarEvento(new Mensaje("distancia", distanciaPuntos));
     }
-        
-            private boolean validarLinea() {
+
+    /**
+     * Método para validar la línea en base a los puntos del objeto.
+     * @return Boolean con la respuesta de la validación.
+     */
+    private boolean validarLinea() {
         Dot puntoA = this.puntoA;
         Dot puntoB = this.puntoB;
 
@@ -239,7 +309,13 @@ public class GestorElementosGraficos {
             return false;
         }
     }
-            private Line acomodarCordenadas(Line linea) {
+
+    /**
+     * Método para reacomodar las coordenadas en base a sus ejes. 
+     * @param linea Objeto tipo Line el cual será reacomodado.
+     * @return Objeto tipo Line con los datos de posición correctos.
+     */
+    private Line acomodarCordenadas(Line linea) {
         int valorA = linea.getStart().getX() + linea.getStart().getY();
         int valorB = linea.getEnd().getX() + linea.getEnd().getY();
         if (valorA < valorB) {
@@ -248,8 +324,13 @@ public class GestorElementosGraficos {
             return new Line(puntoB, puntoA);
         }
     }
-            
-        public boolean validarLineaExistente(Line linea) {
+
+    /**
+     * Método para validar si la línea entrante está dentro de la lista de líneas.
+     * @param linea Objeto tipo Line el cual será comparado con la lista existente.
+     * @return Boolean con la respuesta de la validación.
+     */
+    public boolean validarLineaExistente(Line linea) {
         for (int i = 0; i < this.lineas.size(); i++) {
             if (lineas.get(i).equals(linea)) {
                 return true;
@@ -257,4 +338,10 @@ public class GestorElementosGraficos {
         }
         return false;
     }
+
 }
+
+
+
+
+

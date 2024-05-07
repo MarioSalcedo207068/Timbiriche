@@ -15,8 +15,8 @@ import java.util.List;
 import observador.IObservador;
 
 /**
- *
- * @author salce
+ * Clase para representar el controlador de mensajes dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class Controlador implements IObservador {
     
@@ -27,12 +27,19 @@ public class Controlador implements IObservador {
     //procesar el evento (mensajeSender)
     private MessageSender mensajeSender;
     
+    /**
+     * Método constructor base de la clase.
+     */
     public Controlador() {
         this.mensajeSender = new MessageSender();
         this.gestorCuenta = new GestorCuenta();
         this.gestorElementosGraficos = new GestorElementosGraficos.GestorElementosGraficos();
     }
     
+    /**
+     * Método para procesar un mensaje entrante e interpretarlo dependiendo de su contenido.
+     * @param mensajeBody Objeto tipo Cadena con el mensaje a interpretar.
+     */
     @Override
     public void procesarMensaje(String mensajeBody) {
         Mensaje mensaje = GSON.fromJson(mensajeBody, Mensaje.class);

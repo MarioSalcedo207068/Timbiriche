@@ -14,16 +14,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author salce
+ * Clase para representar el emisor de mensajes dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class MessageSender {
     
     private final static String EXCHANGE_NAME = "exchange-jugadores";
         
+    /**
+     * Método constructor base de la clase.
+     */
     public MessageSender() {
     }
 
+    /**
+     * Método con el cual se enviarán los mensajes de todo tipo.
+     * @param mensaje Objeto tipo Cadena con el mensaje a enviar.
+     */
     public void enviarMensaje(String mensaje) {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");

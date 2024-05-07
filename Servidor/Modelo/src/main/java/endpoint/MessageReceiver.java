@@ -15,8 +15,8 @@ import observador.IObservable;
 import observador.IObservador;
 //import controlador.Controlador;
 /**
- *
- * @author salce
+ * Clase para representar el receptor de mensajes dentro del proyecto Timbiriche.
+ * @author Equipo 01
  */
 public class MessageReceiver implements IObservable{
     
@@ -26,6 +26,9 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
     private final static MessageSender SENDER = new MessageSender();
     private List<IObservador> observadores = new ArrayList<>();
 
+    /**
+     * Método para iniciar la conexión con el servidor principal.
+     */
     public void iniciarConsumidor() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
@@ -58,6 +61,10 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
         }
 
     }
+    /**
+     * Método para actualizar todos los observadores con el mensaje entrante.
+     * @param mensajeBody Objeto tipo Cadena con el mensaje a distribuir.
+     */
         @Override
     public void actualizarTodos(String mensajeBody) {
         for (IObservador observador : observadores) {
@@ -65,6 +72,10 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
         }
     }
 
+    /**
+     * Método para añadir un observador a la lista de observadores existente.
+     * @param observador Objeto tipo Observer con la información del observador entrante.
+     */
     @Override
     public void agregarObservador(IObservador observador) {
         this.observadores.add(observador);
