@@ -6,9 +6,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 /**
  *
@@ -26,7 +24,7 @@ public class Tablero extends javax.swing.JFrame {
 
     public void cargarTablero(JPanel panelTablero) {
         panelPrincipal.setSize(panelTablero.getWidth(),
-                panelTablero.getHeight());
+        panelTablero.getHeight());
         panelTablero.setLocation(0, 0);
         panelTablero.setBackground(Color.GRAY);
         panelPrincipal.removeAll();

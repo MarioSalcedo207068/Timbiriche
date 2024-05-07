@@ -5,7 +5,11 @@
 package ViewModel;
 
 import Dominio.Dot;
+<<<<<<< HEAD
 import View.Configuracion;
+=======
+import Dominio.Game;
+>>>>>>> d5e76cb (ajustes v2)
 import View.Tablero;
 import View.TableroPanel;
 import gestor.Gestor;
@@ -19,10 +23,116 @@ import observador.IObservador;
  *
  * @author salce
  */
+<<<<<<< HEAD
 public class viewModelTablero {
 
 /*    Tablero tablero;
     Configuracion configuracion;
+=======
+public class viewModelTablero implements ActionListener, IObservadorPantalla{
+    
+     Gestor gestor= Gestor.getInstance();
+     Tablero tablero= new Tablero();
+     TableroPanel panelTablero;
+     viewModelPanelTablero viewModelPanelTablero;
+     viewModelConfiguracion viewModelConfiguracion;
+     viewModelFinJuego viewModelFinJuego;
+     Game game = Game.getInstance();
+    
+        public viewModelTablero() {
+            //this.tablero = new Tablero();
+    }
+        
+        public void agregarJugaresPantalla() {
+        if (!game.getPlayers().isEmpty()) {
+            if (game.getPlayers().size() >= 1 && game.getPlayers().get(0) != null) {
+                tablero.txtPlayer1.setText(game.getPlayers().get(0).getName());
+                tablero.txtPlayer1.setForeground(game.getPlayers().get(0).getColor());
+                tablero.colorPlayer1.setOpaque(true);
+                tablero.colorPlayer1.setBackground(game.getPlayers().get(0).getColor());
+            }
+            if (game.getPlayers().size() >= 2 && game.getPlayers().get(1) != null) {
+                tablero.txtPlayer2.setText(game.getPlayers().get(1).getName());
+                tablero.txtPlayer2.setForeground(game.getPlayers().get(1).getColor());
+                tablero.colorPlayer2.setOpaque(true);
+                tablero.colorPlayer2.setBackground(game.getPlayers().get(1).getColor());
+            }
+
+            if (game.getPlayers().size() >= 3 && game.getPlayers().get(2) != null) {
+                tablero.txtPlayer3.setText(game.getPlayers().get(2).getName());
+                tablero.txtPlayer3.setForeground(game.getPlayers().get(2).getColor());
+                tablero.colorPlayer3.setOpaque(true);
+                tablero.colorPlayer3.setBackground(game.getPlayers().get(2).getColor());
+            }
+
+            if (game.getPlayers().size() >= 4 && game.getPlayers().get(3) != null) {
+                tablero.txtPlayer4.setText(game.getPlayers().get(3).getName());
+                tablero.txtPlayer4.setForeground(game.getPlayers().get(3).getColor());
+                tablero.colorPlayer4.setOpaque(true);
+                tablero.colorPlayer4.setBackground(game.getPlayers().get(3).getColor());
+            }
+
+        }
+
+    }
+    
+    public void iniciarPantalla() {
+        panelTablero.setGame(game);
+        tablero.cargarTablero(panelTablero);
+        agregarJugaresPantalla();
+        
+        this.tablero.setVisible(true);
+        
+        tablero.panelPrincipal.repaint();
+    }
+    public void setPantallaTablero(TableroPanel panelTablero){
+        this.panelTablero= panelTablero;
+    }
+
+    public viewModelPanelTablero getViewModelPanelTablero() {
+        return viewModelPanelTablero;
+    }
+
+    public void setViewModelPanelTablero(viewModelPanelTablero viewModelPanelTablero) {
+        this.viewModelPanelTablero = viewModelPanelTablero;
+    }
+
+    public viewModelConfiguracion getViewModelConfiguracion() {
+        return viewModelConfiguracion;
+    }
+
+    public void setViewModelConfiguracion(viewModelConfiguracion viewModelConfiguracion) {
+        this.viewModelConfiguracion = viewModelConfiguracion;
+    }
+
+    public viewModelFinJuego getViewModelFinJuego() {
+        return viewModelFinJuego;
+    }
+
+    public void setViewModelFinJuego(viewModelFinJuego viewModelFinJuego) {
+        this.viewModelFinJuego = viewModelFinJuego;
+    }
+    
+        @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+        @Override
+    public void actualizarPantalla() {
+        agregarJugaresPantalla();
+        panelTablero.setGame(game);
+        tablero.repaint();
+        panelTablero.repaint();
+    }
+    
+        public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    
+/*    
+>>>>>>> d5e76cb (ajustes v2)
     TableroPanel tableroPanel;
     Gestor gestor;
     viewModelPanelTablero viewModelPanelTablero;
@@ -72,4 +182,9 @@ public class viewModelTablero {
 
     }*/
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d5e76cb (ajustes v2)
 }
