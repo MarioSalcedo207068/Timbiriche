@@ -34,6 +34,25 @@ public class GestorPanel {
             g.fillOval(posicionX, posicionY, 10, 10);
         }
     }
+    
+    public void dibujarPuntos1(Graphics g, List<Dot> puntos, Dot puntoA, Dot puntoB) {
+        for (Dot punto : puntos) {
+            int posicionX = punto.getX();
+            int posicionY = punto.getY();
+            g.setColor(Color.WHITE);
+            g.fillOval(posicionX, posicionY, 10, 10);
+        }
+
+        if (puntoA != null) {
+            g.setColor(Color.GREEN);
+            g.fillOval(puntoA.getX(), puntoA.getY(), 10, 10);
+        }
+
+        if (puntoB != null) {
+            g.setColor(Color.GREEN);
+            g.fillOval(puntoB.getX(), puntoB.getY(), 10, 10);
+        }
+    }
 
     public void dibujarLineas(Graphics g, List<Line> lineas) {
         if (lineas != null) {

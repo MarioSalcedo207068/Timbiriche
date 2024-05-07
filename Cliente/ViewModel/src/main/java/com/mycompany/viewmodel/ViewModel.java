@@ -40,6 +40,8 @@ public class ViewModel {
 
         controlador.agregarObservador(lobbyEspera);
         controlador.agregarObservador(viewModelTablero);
+        controlador.agregarObservador(viewModel_PartidaNueva);
+        
 
         viewModel_PantallaInicio.setLobbyEspera(lobbyEspera);
         viewModel_PantallaInicio.setViewModel_PartidaNueva(viewModel_PartidaNueva);

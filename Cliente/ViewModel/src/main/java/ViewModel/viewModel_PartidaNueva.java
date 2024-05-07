@@ -12,12 +12,13 @@ import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import observador.IObservadorPantalla;
 
 /**
  *
  * @author salce
  */
-public class viewModel_PartidaNueva implements ActionListener {
+public class viewModel_PartidaNueva implements ActionListener, IObservadorPantalla {
 
     private Gestor gestor= Gestor.getInstance();
     PartidaNueva partidaNueva = new PartidaNueva();
@@ -26,16 +27,19 @@ public class viewModel_PartidaNueva implements ActionListener {
     private viewModelLobbyEspera lobbyEspera;
     Game game = Game.getInstance();
     private TableroPanel tableroPanel;
+    Tablero tablero;
     
     public viewModel_PartidaNueva() {
-        this.partidaNueva.btn10.addActionListener(this);
-        this.partidaNueva.btn20.addActionListener(this);
-        this.partidaNueva.btn30.addActionListener(this);
-        this.partidaNueva.btnStart.addActionListener(this);
+        
+        this.generarEventosConfiguracion();
         
     }
 
     private void generarEventosConfiguracion() {
+        this.partidaNueva.btn10.addActionListener(this);
+        this.partidaNueva.btn20.addActionListener(this);
+        this.partidaNueva.btn30.addActionListener(this);
+        this.partidaNueva.btnStart.addActionListener(this);
     }
 
     public void iniciarPantalla() {
@@ -93,5 +97,11 @@ public class viewModel_PartidaNueva implements ActionListener {
             partidaNueva.dispose();
 
         }
+    }
+
+    @Override
+    public void actualizarPantalla() {
+        this.tablero.cargarTablero(tableroPanel);
+        
     }
 }
