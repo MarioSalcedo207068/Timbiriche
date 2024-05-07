@@ -30,9 +30,9 @@ public class ViewModel {
         mensajeReceiver.iniciarCOnsumidor();
 
         viewModel_PantallaInicio viewModel_PantallaInicio = new viewModel_PantallaInicio();
-        viewModel_PartidaNueva viewModel_PartidaNueva = new viewModel_PartidaNueva();
-        //agregado
         viewModelTablero viewModelTablero = new viewModelTablero();
+        viewModel_PartidaNueva viewModel_PartidaNueva = new viewModel_PartidaNueva();
+        viewModel_PartidaNueva.setViewModelTablero(viewModelTablero);
         //--Editado
         //viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio);
         viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio, viewModelTablero);

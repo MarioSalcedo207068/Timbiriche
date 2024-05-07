@@ -4,7 +4,14 @@
  */
 package View;
 
+import Dominio.Box;
+import Dominio.Dot;
+import Dominio.Game;
+import Dominio.Line;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
+import manager.GestorPanel;
 
 /**
  *
@@ -12,34 +19,64 @@ import java.awt.Graphics;
  */
 public class TableroPanel extends javax.swing.JPanel {
 
-    public TableroPanel() {
-        initComponents();
+    private GestorPanel gestor = new GestorPanel();
+    private Game game;
+    private Dot PuntoA;
+    private Dot PuntoB;
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Dot getPuntoA() {
+        return PuntoA;
+    }
+
+    public void setPuntoA(Dot PuntoA) {
+        this.PuntoA = PuntoA;
+    }
+
+    public Dot getPuntoB() {
+        return PuntoB;
+    }
+
+    public void setPuntoB(Dot PuntoB) {
+        this.PuntoB = PuntoB;
+    }
+
+    public TableroPanel(Game game) {
+       initComponents();
+       
+       this.game = game;
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        dibujarLineas(g);
-        dibujarCuadrados(g);
-        //dibujarPuntos(g);
+     //   dibujarLineas(g);
+        //dibujarCuadrados(g);
+        dibujarPuntos(g);
+}
+
+    private void dibujarPuntos(Graphics g) {
+        gestor.dibujarPuntos(g, game.getBoard().getDots(),
+                getPuntoA(), getPuntoB());
 
     }
-
-    /*private void dibujarPuntos(Graphics g) {
-        gestor.dibujarPuntos(g, gestor.getPuntos(),
-                gestor.getPuntoA(), gestor.getPuntoB());
-    }*/
-    private void dibujarLineas(Graphics g) {
+    //private void dibujarLineas(Graphics g) {
         //gestor.dibujarLineas(g, gestor.getLineas());
 
-    }
+//    }
 
-    private void dibujarCuadrados(Graphics g) {
+    //private void dibujarCuadrados(Graphics g) {
         //gestor.dibujarCuadrados(g, gestor.getCuadrados(),
         //      Double.valueOf(gestor.getDistanciaPuntos()).intValue());
-    }
-
+    //}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +94,7 @@ public class TableroPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

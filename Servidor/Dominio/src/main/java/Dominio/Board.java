@@ -97,7 +97,11 @@ public class Board {
     public void setDots(List<Dot> dots) {
         this.dots = dots;
     }
-
+    
+    public void addDot(Dot dot) {
+        this.dots.add(dot);
+    }
+    
     public List<Line> getLines() {
         return lines;
     }

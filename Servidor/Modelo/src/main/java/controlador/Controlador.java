@@ -4,13 +4,19 @@
  */
 package controlador;
 
+import Dominio.Board;
+import Dominio.Box;
 import Dominio.Dot;
+import Dominio.Line;
 import Dominio.Player;
+import GestorElementosGraficos.GestorElementosGraficos;
 import GestorJugador.GestorCuenta;
 import GestorJugador.IGestorCuenta;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import endpoint.MessageSender;
 import formato.Mensaje;
+import java.lang.reflect.Type;
 import java.util.List;
 import observador.IObservador;
 
@@ -24,14 +30,14 @@ public class Controlador implements IObservador {
 
     IGestorCuenta gestorCuenta;
     
-    GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
+    GestorElementosGraficos gestorElementosGraficos;
     //procesar el evento (mensajeSender)
     private MessageSender mensajeSender;
 
     public Controlador() {
         this.mensajeSender = new MessageSender();
         this.gestorCuenta = new GestorCuenta();
-        this.gestorElementosGraficos = new GestorElementosGraficos.GestorElementosGraficos();
+        this.gestorElementosGraficos = new GestorElementosGraficos();
     }
 
    
@@ -43,26 +49,44 @@ public class Controlador implements IObservador {
             Player player = GSON.fromJson(GSON.toJsonTree(mensaje.getObject()), Player.class);
 
             gestorCuenta.addPlayer(player);
-            System.out.println("3");
             Mensaje mensajeRespuesta = new Mensaje("lista-jugadores", gestorCuenta.getListPlayer());
-            System.out.println("4");
             String respuestaJson = GSON.toJson(mensajeRespuesta);
-            System.out.println("5");
             mensajeSender.enviarMensaje(respuestaJson);
         }
 
-        if (mensaje.getTipo() == "calcularPuntosTablero") {
-            List<Integer> puntosTablero = (List<Integer>) mensaje.getObject();
-            List<Dot> puntos
-                    = gestorElementosGraficos.calcularPuntosTablero(puntosTablero.get(0), puntosTablero.get(1), puntosTablero.get(2));
-            Mensaje mensajeRespuesta = new Mensaje("puntosCalculados", puntos);
-
+        if ("calcular-Puntos-Tablero".equals(mensaje.getTipo())) {
+            Type tipoListaObjetos = new TypeToken<List<Integer>>() {
+            }.getType();
+            List<Integer> puntosTablero = GSON.fromJson(GSON.toJson(mensaje.getObject()), tipoListaObjetos);          
+            List<Dot> puntos = gestorElementosGraficos.calcularPuntosTablero(puntosTablero.get(0), puntosTablero.get(1), puntosTablero.get(2));
+            
+            for (Dot punto : puntos) {
+                gestorElementosGraficos.addDot(punto);
+            }
+            Mensaje mensajeRespuesta = new Mensaje("puntos-calculados", gestorElementosGraficos.getPuntos());
+            
             //Convertir json
             String respuestaJson = GSON.toJson(mensajeRespuesta);
             //envía a través del rabbit sender
             mensajeSender.enviarMensaje(respuestaJson);
 
         }
+        
+        if ("dibujar-linea".equals(mensaje.getTipo())) {
+            Line line = GSON.fromJson(GSON.toJsonTree(mensaje.getObject()), Line.class);
+            
+            gestorElementosGraficos.addLinea(line);
+            
+            Mensaje mensajeRespuesta = new Mensaje("agregar-linea", gestorElementosGraficos.getLineas() );
+            String respuestaJson = GSON.toJson(mensajeRespuesta);
+            mensajeSender.enviarMensaje(respuestaJson);
+            
+            Mensaje mensajeRespuestaCajas = new Mensaje("agregar-cuadrado", gestorElementosGraficos.getBox());
+            String respuestaJsonCajas = GSON.toJson(mensajeRespuestaCajas);
+            mensajeSender.enviarMensaje(respuestaJsonCajas);
+        }
+        
+        
+        
     }
-
 }
