@@ -69,8 +69,8 @@ public class Line {
      * Método para obtener el color de la línea.
      * @return Cadena con el color de la línea.
      */
-    public Color getColor() {
-        return Color.decode(color);
+    public String getColor() {
+        return color;
     }
 
     /**

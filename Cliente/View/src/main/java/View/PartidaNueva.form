@@ -214,7 +214,6 @@
               <Font name="Segoe UI" size="14" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="10x10"/>
-            <Property name="actionCommand" type="java.lang.String" value="10"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn10ActionPerformed"/>
@@ -232,7 +231,6 @@
               <Font name="Segoe UI" size="14" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="20x20"/>
-            <Property name="actionCommand" type="java.lang.String" value="20"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -247,7 +245,6 @@
               <Font name="Segoe UI" size="14" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="30x30"/>
-            <Property name="actionCommand" type="java.lang.String" value="30"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn30ActionPerformed"/>
@@ -266,9 +263,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Play"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

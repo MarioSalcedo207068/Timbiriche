@@ -13,9 +13,6 @@ public class Game {
     private static Game instance;
     private List<Player> players=new ArrayList<Player>();
     private Board board;
-    //agregado
-    //private Line line;
-    //private Box box;
     
     public void startGame(){}
     
@@ -30,9 +27,7 @@ public class Game {
     /**
      * Constructor privado para evitar crear otra instancia fuera de la clase.
      */
-    private Game(){
-        this.board=new Board();
-    }
+    private Game(){}
     
     /**
      * Implementación Singleton
@@ -61,19 +56,5 @@ public class Game {
         this.players = players;
     }
     
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-    //agregado
-//        public void setLine(Line line) {
-//        this.line = line;
-//    }
-//        public void setBox(Box box){
-//        this.box = box;
-//        }
-
-    public Board getBoard() {
-        return board;
-    }
-        
+            
 }

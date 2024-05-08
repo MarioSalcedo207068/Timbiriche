@@ -4,43 +4,40 @@
  */
 package ViewModel;
 
-import Dominio.Game;
 import View.PartidaNueva;
-import View.Tablero;
-import View.TableroPanel;
 import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import observador.IObservadorPantalla;
 
 /**
  *
  * @author salce
  */
-public class viewModel_PartidaNueva implements ActionListener, IObservadorPantalla {
+public class viewModel_PartidaNueva implements ActionListener {
 
     private Gestor gestor= Gestor.getInstance();
-    PartidaNueva partidaNueva = new PartidaNueva();
+    PartidaNueva partidaNueva;
     Integer dimension;
     viewModelTablero viewModelTablero;
     private viewModelLobbyEspera lobbyEspera;
-    Game game = Game.getInstance();
-    private TableroPanel tableroPanel;
-    Tablero tablero;
-    
-    public viewModel_PartidaNueva() {
-        
-        this.generarEventosConfiguracion();
-        
-    }
 
-    private void generarEventosConfiguracion() {
+    public viewModel_PartidaNueva() {
+        this.partidaNueva = new PartidaNueva();
         this.partidaNueva.btn10.addActionListener(this);
         this.partidaNueva.btn20.addActionListener(this);
         this.partidaNueva.btn30.addActionListener(this);
         this.partidaNueva.btnStart.addActionListener(this);
     }
+
+
+
+    /*private void generarEventosConfiguracion() {
+        this.partidaNueva.btn10.addActionListener(this);
+        this.partidaNueva.btn20.addActionListener(this);
+        this.partidaNueva.btn30.addActionListener(this);
+        this.partidaNueva.btnStart.addActionListener(this);
+    }*/
 
     public void iniciarPantalla() {
         //this.gestor.iniciarJugador();
@@ -69,7 +66,7 @@ public class viewModel_PartidaNueva implements ActionListener, IObservadorPantal
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() != "Play") {
+        if (e.getActionCommand() != "Comenzar") {
             dimension = Integer.parseInt(e.getActionCommand());
             System.out.println(dimension);
             System.out.println("DIMENSION: " + e.getActionCommand());
@@ -79,12 +76,8 @@ public class viewModel_PartidaNueva implements ActionListener, IObservadorPantal
                 JOptionPane.showMessageDialog(null, "Seleccione una dimensión primero");
             } else {
                 System.out.println("COMENZAR");
-                this.tableroPanel=new TableroPanel(game);
-                tableroPanel.setSize(600, 600);
-                gestor.calcularPuntosTablero(dimension, 600, 600);
-                 tableroPanel = new TableroPanel(game);
-                viewModelTablero.setPantallaTablero(tableroPanel);
-                viewModelTablero.iniciarPantalla();
+                //this.viewModelTablero = new viewModelTablero(dimension, gestor);
+                //viewModelTablero.iniciar();
                 partidaNueva.dispose();
             }
         }
@@ -97,11 +90,5 @@ public class viewModel_PartidaNueva implements ActionListener, IObservadorPantal
             partidaNueva.dispose();
 
         }
-    }
-
-    @Override
-    public void actualizarPantalla() {
-        this.tablero.cargarTablero(tableroPanel);
-        
     }
 }

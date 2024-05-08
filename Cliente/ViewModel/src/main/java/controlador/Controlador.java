@@ -4,11 +4,7 @@
  */
 package controlador;
 
-import Dominio.Board;
-import Dominio.Box;
-import Dominio.Dot;
 import Dominio.Game;
-import Dominio.Line;
 import Dominio.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,31 +42,7 @@ public class Controlador implements IObservable {
             game.setPlayers(players);
 
         }
-        if(mensaje.getTipo().equals("puntos-calculados")){
-            
-            Type tipoListaObjetos = new TypeToken<List<Dot>>(){
-            }.getType();
-            List<Dot> dots = GSON.fromJson(GSON.toJson(mensaje.getObject()), tipoListaObjetos);
-            
-            game.getBoard().setDots(dots);
-        }
-        if(mensaje.getTipo().equals("agregar-linea")){
-        
-            Type tipoListaObjetos = new TypeToken<List<Line>>() {
-            }.getType();
-            List<Line> line = GSON.fromJson(GSON.toJson(mensaje.getObject()), tipoListaObjetos);
-            
-            game.getBoard().setLines(line);
-        }
-        if(mensaje.getTipo().equals("agregar-cuadrado")){
-        
-            Type tipoListaObjetos = new TypeToken<List<Box>>() {
-            }.getType();
-            List<Box> box = GSON.fromJson(GSON.toJson(mensaje.getObject()), tipoListaObjetos);
-            
-            game.getBoard().setBoxes(box);
-        }
-        
+
         actualizarTodos();
     }
 

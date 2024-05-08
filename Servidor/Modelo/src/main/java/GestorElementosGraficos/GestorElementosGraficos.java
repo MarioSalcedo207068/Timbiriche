@@ -44,15 +44,31 @@ public class GestorElementosGraficos {
      * @return Lista tipo Dot con todos los puntos almacenados.
      */
     public List<Dot> getPuntos() {
-    private Dot puntoA;
-    private Dot puntoB;
-    Double distanciaPuntos;
     //Agregado
     private Game game = Game.getInstance();
-    //Agregado último
     
-        public List<Line> getLineas() {
-        return this.game.getBoard().getLines();
+    
+        public List<Dot> getPuntos() {
+        return puntos;
+    }
+
+    /**
+     * Método para ingresar una lista de puntos, actualizando la lista de puntos
+     * almacenados.
+     *
+     * @param puntos Lista tipo Dot con la información de los puntos entrantes.
+     */
+    public void setPuntos(List<Dot> puntos) {
+        this.puntos = puntos;
+    }
+
+    /**
+     * Método para obtener las líneas almacenadas en la lista de líneas.
+     *
+     * @return Lista tipo Line con todas las líneas almacenadas.
+     */
+    public List<Line> getLineas() {
+        return lineas;
     }
 
     /**
@@ -62,23 +78,7 @@ public class GestorElementosGraficos {
      * @param lineas Lista tipo Line con la información de las líneas entrantes.
      */
     public void setLineas(List<Line> lineas) {
-        this.game.getBoard().setLines(lineas);
-    }
-    
-        public List<Dot> getPuntos() {
-        return this.game.getBoard().getDots();
-    }
-
-    public void setPuntos(List<Dot> puntos) {
-        this.game.getBoard().setDots(puntos);
-    }
-
-    public List<Box> getBox() {
-        return this.game.getBoard().getBoxes();
-    }
-
-    public void setBox(List<Box> cuadrados) {
-        this.game.getBoard().setBoxes(cuadrados);
+        this.lineas = lineas;
     }
 
     /*public void addLinea(Line linea) {
@@ -120,7 +120,7 @@ public class GestorElementosGraficos {
     public void addLinea(Line linea) {
         if (!validarLineaExistente(linea)) {
             validarCuadrado(linea);
-            this.game.getBoard().addLine(linea);
+            this.lineas.add(linea);
             //gestor.enviarEvento(new Mensaje("linea", linea));
         }
     }
@@ -130,7 +130,7 @@ public class GestorElementosGraficos {
      * @param cuadrado Objeto tipo Box el cual será agregado.
      */
     public void addCuadrado(Box cuadrado) {
-        this.game.getBoard().addBox(cuadrado);
+        this.cuadrados.add(cuadrado);
         //gestor.enviarEvento(new Mensaje("cuadrado", cuadrado));
     }
 
@@ -138,15 +138,6 @@ public class GestorElementosGraficos {
      * Método para validar un cuadrado en base a una línea entrante. 
      * @param linea Objeto tipo Line el cual estará siendo validado constantemente.
      */
-    
-//Agregado
-    public void addDot(Dot punto){
-        if(!validarPunto(punto)){
-            validarPunto(punto);
-            this.game.getBoard().addDot(punto);
-        }
-    }
-    
     public void validarCuadrado(Line linea) {
         Dot puntoCSup;
         Dot puntoDSup;
@@ -189,7 +180,7 @@ public class GestorElementosGraficos {
 
                 System.out.println("Cuadrado");
                 Box cuadrado = new Box(linea.getStart(), linea.getEnd(),
-                        puntoDSup, puntoCSup, linea.getColor().toString());
+                        puntoDSup, puntoCSup, linea.getColor());
                 addCuadrado(cuadrado);
 
             }
@@ -199,7 +190,7 @@ public class GestorElementosGraficos {
 
                 System.out.println("Cuadrado");
                 Box cuadrado = new Box(linea.getStart(), linea.getEnd(),
-                        puntoDInf, puntoCInf, linea.getColor().toString());
+                        puntoDInf, puntoCInf, linea.getColor());
                 addCuadrado(cuadrado);
 
             }
@@ -226,7 +217,7 @@ public class GestorElementosGraficos {
 
                 System.out.println("Cuadrado");
                 Box cuadrado = new Box(linea.getStart(), linea.getEnd(),
-                        puntoBSup, puntoCSup, linea.getColor().toString());
+                        puntoBSup, puntoCSup, linea.getColor());
                 addCuadrado(cuadrado);
 
             }
@@ -236,7 +227,7 @@ public class GestorElementosGraficos {
 
                 System.out.println("Cuadrado");
                 Box cuadrado = new Box(linea.getStart(), linea.getEnd(),
-                        puntoBInf, puntoCInf, linea.getColor().toString());
+                        puntoBInf, puntoCInf, linea.getColor());
                 addCuadrado(cuadrado);
             }
 
@@ -270,8 +261,6 @@ public class GestorElementosGraficos {
      * @return Boolean con la respuesta de la validación.
      */
     public boolean validarPunto(Dot puntoValidar) {
-        
-        public boolean validarPunto(Dot puntoValidar) {
         for (Dot punto : getPuntos()) {
             if (puntoValidar.getX() >= punto.getX() - 10
                     && puntoValidar.getX() <= punto.getX() + 10
@@ -290,6 +279,7 @@ public class GestorElementosGraficos {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -299,9 +289,6 @@ public class GestorElementosGraficos {
     private void calcularDistancia() {
         Dot puntoA = this.puntos.get(0);
         Dot puntoB = this.puntos.get(1);;
-            private void calcularDistancia() {
-        Dot puntoA = this.game.getBoard().getDots().get(0);
-        Dot puntoB = this.game.getBoard().getDots().get(1);;
         Double distanciaX = Math.pow((puntoB.getX() - puntoA.getX()), 2);
         Double distanciaY = Math.pow((puntoB.getY() - puntoA.getY()), 2);
         this.distanciaPuntos = Math.sqrt(distanciaX + distanciaY);
@@ -322,7 +309,7 @@ public class GestorElementosGraficos {
         if (distancia.equals(distanciaPuntos)) {
 
             Line linea = acomodarCordenadas(new Line(puntoA, puntoB));
-            //linea.setColor(jugadorPrincipal.getColor().toString());
+            linea.setColor(jugadorPrincipal.getColor().toString());
             //this.gestor.enviarEvento(new Mensaje("linea", linea));
             return true;
         } else {
@@ -353,10 +340,6 @@ public class GestorElementosGraficos {
     public boolean validarLineaExistente(Line linea) {
         for (int i = 0; i < this.lineas.size(); i++) {
             if (lineas.get(i).equals(linea)) {
-            
-        public boolean validarLineaExistente(Line linea) {
-        for (int i = 0; i < this.game.getBoard().getLines().size(); i++) {
-            if (game.getBoard().getLines().get(i).equals(linea)) {
                 return true;
             }
         }
@@ -416,4 +399,3 @@ public class GestorElementosGraficos {
     }
     
 }
-

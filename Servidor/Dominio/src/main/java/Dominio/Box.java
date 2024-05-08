@@ -83,8 +83,8 @@ public class Box {
      * Método para obtener el color que conforma al cuadrado.
      * @return Cadena con el color.
      */
-    public Color getColor() {
-        return Color.decode(color);
+    public String getColor() {
+        return color;
     }
 
     /**
@@ -94,6 +94,5 @@ public class Box {
     public void setColor(String color) {
         this.color = color;
     }
-
 
 }
