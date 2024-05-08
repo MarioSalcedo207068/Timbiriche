@@ -19,12 +19,19 @@ import formato.Mensaje;
 public class Gestor  {
     private MessageSender mensajeSender;
     private Gson gson;
+    private static Gestor gestor;
     //Agregado
-    private MessageReceiver mensajeReceiver;
+    //private MessageReceiver mensajeReceiver;
 
-    public Gestor() {
+    private Gestor() {
         this.mensajeSender = new MessageSender();
         this.gson = new Gson();
+    }
+        public static Gestor getInstance() {
+        if (gestor == null) {
+            gestor = new Gestor();
+        }
+        return gestor;
     }
 
     // Correcto

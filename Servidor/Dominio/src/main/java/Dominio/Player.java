@@ -62,7 +62,7 @@ public class Player {
      */
     public Player(String name, String color, String pathImage, int score) {
         this.name = name;
-        this.color = color;
+        this.setColor(color);
         this.pathImage = pathImage;
         this.score = score;
     }
@@ -109,8 +109,8 @@ public class Player {
      *
      * @return Cadena con el color del jugador.
      */
-    public String getColor() {
-        return color;
+    public Color getColor() {
+        return Color.decode(color);
     }
 
     /**

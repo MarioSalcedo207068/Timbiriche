@@ -66,6 +66,7 @@ private final static String EXCHANGE_NAME = "exchange-timbiriche";
      * @param mensajeBody Objeto tipo Cadena con el mensaje a distribuir.
      */
         @Override
+    @Override
     public void actualizarTodos(String mensajeBody) {
         for (IObservador observador : observadores) {
             observador.procesarMensaje(mensajeBody);

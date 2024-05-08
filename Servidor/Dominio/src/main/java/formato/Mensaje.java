@@ -12,9 +12,6 @@ public class Mensaje {
     private String tipo;
     @SerializedName("objeto")
     private Object object;
-    @SerializedName("destinatario")
-    private String destinatario = "jugadores";
-    
     /**
      * Método constructor base de la clase.
      */  
@@ -67,10 +64,4 @@ public class Mensaje {
      * Método para obtener el destinatario del mensaje. 
      * @return Cadena con el destinatario.
      */
-    public String getDistinatario() {
-        return destinatario;
-    }
-    
-    
-
 }

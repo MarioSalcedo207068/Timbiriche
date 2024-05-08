@@ -12,6 +12,7 @@ import observador.IObservador;
  *
  * @author Equipo 01
  */
+
 public class GestorCuenta implements IGestorCuenta {
 
     private List<IObservador> observadoresPantalla;
