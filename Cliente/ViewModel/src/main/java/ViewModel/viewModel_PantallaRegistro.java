@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class viewModel_PantallaRegistro implements ActionListener {
 
     private Registro pantallaRegistro;
-    private Gestor gestor;
+    private Gestor gestor = Gestor.getInstance();
     private String color;
     private String colorSeleccionado;
     private String direccionImg;
@@ -31,9 +31,9 @@ public class viewModel_PantallaRegistro implements ActionListener {
     private GestorCuenta gestorCuenta;
     
 
-    public viewModel_PantallaRegistro() {
+    public viewModel_PantallaRegistro(viewModel_PantallaInicio viewModel_PantallaInicio) {
+        this.viewModel_PantallaInicio = viewModel_PantallaInicio;
         this.pantallaRegistro = new Registro();
-        this.gestor = new Gestor();
         this.pantallaRegistro.btnRegistrar.addActionListener(this);
         this.pantallaRegistro.cbxColor.addActionListener(this);
 
@@ -64,8 +64,7 @@ public class viewModel_PantallaRegistro implements ActionListener {
                 player.setColor(color);
                 System.out.println(color.toString());
                 gestor.agregarJugador(player);
-                //this.gestor.setJugadorPrincipal(player);                    
-                viewModel_PantallaInicio = new viewModel_PantallaInicio(gestor);
+               
                 viewModel_PantallaInicio.iniciarPantalla();
                 pantallaRegistro.dispose();
             }

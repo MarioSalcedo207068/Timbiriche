@@ -9,7 +9,6 @@ import gestor.Gestor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import observador.IObservador;
 
 /**
  *
@@ -17,22 +16,21 @@ import observador.IObservador;
  */
 public class viewModel_PartidaNueva implements ActionListener {
 
+    private Gestor gestor= Gestor.getInstance();
     PartidaNueva partidaNueva;
-    Gestor gestor;
     Integer dimension;
     viewModelTablero viewModelTablero;
+    private viewModelLobbyEspera lobbyEspera;
 
     public viewModel_PartidaNueva() {
-    }
-
-
-    public viewModel_PartidaNueva(Gestor gestor) {
-        this.gestor = gestor;
         this.partidaNueva = new PartidaNueva();
-        //this.gestor.agregarObservador((IObservador) partidaNueva);
-        //this.generarEventosConfiguracion();
-
+        this.partidaNueva.btn10.addActionListener(this);
+        this.partidaNueva.btn20.addActionListener(this);
+        this.partidaNueva.btn30.addActionListener(this);
+        this.partidaNueva.btnStart.addActionListener(this);
     }
+
+
 
     /*private void generarEventosConfiguracion() {
         this.partidaNueva.btn10.addActionListener(this);
@@ -48,6 +46,23 @@ public class viewModel_PartidaNueva implements ActionListener {
         //this.gestor.mandarJugadorPrincipal();
 
     }
+
+    public viewModelTablero getViewModelTablero() {
+        return viewModelTablero;
+    }
+
+    public void setViewModelTablero(viewModelTablero viewModelTablero) {
+        this.viewModelTablero = viewModelTablero;
+    }
+
+    public viewModelLobbyEspera getLobbyEspera() {
+        return lobbyEspera;
+    }
+
+    public void setLobbyEspera(viewModelLobbyEspera lobbyEspera) {
+        this.lobbyEspera = lobbyEspera;
+    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {

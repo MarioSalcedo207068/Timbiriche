@@ -19,10 +19,11 @@ import observador.IObservador;
  * @author Equipo 01
  */
 public class Controlador implements IObservador {
-    
+
     private final static Gson GSON = new Gson();
-    //Tablero data
+
     IGestorCuenta gestorCuenta;
+    
     GestorElementosGraficos.GestorElementosGraficos gestorElementosGraficos;
     //procesar el evento (mensajeSender)
     private MessageSender mensajeSender;
@@ -30,6 +31,7 @@ public class Controlador implements IObservador {
     /**
      * Método constructor base de la clase.
      */
+
     public Controlador() {
         this.mensajeSender = new MessageSender();
         this.gestorCuenta = new GestorCuenta();
@@ -43,33 +45,31 @@ public class Controlador implements IObservador {
     @Override
     public void procesarMensaje(String mensajeBody) {
         Mensaje mensaje = GSON.fromJson(mensajeBody, Mensaje.class);
-        
-        if (mensaje.getTipo() == "agregar-jugador") {
+
+        if ("agregar-jugador".equals(mensaje.getTipo())) {
             Player player = GSON.fromJson(GSON.toJsonTree(mensaje.getObject()), Player.class);
-            gestorCuenta.addPlayer((Player) mensaje.getObject());
-            
+
+            gestorCuenta.addPlayer(player);
+            System.out.println("3");
             Mensaje mensajeRespuesta = new Mensaje("lista-jugadores", gestorCuenta.getListPlayer());
-            
+            System.out.println("4");
             String respuestaJson = GSON.toJson(mensajeRespuesta);
-            
+            System.out.println("5");
             mensajeSender.enviarMensaje(respuestaJson);
         }
-        
-        /*if (mensaje.getTipo() == "calcularPuntosTablero") {
+
+        if (mensaje.getTipo() == "calcularPuntosTablero") {
             List<Integer> puntosTablero = (List<Integer>) mensaje.getObject();
-            List<Dot> puntos = 
-            gestorElementosGraficos.calcularPuntosTablero
-            (puntosTablero.get(0),puntosTablero.get(1),puntosTablero.get(2));
-            Mensaje mensajeRespuesta = new Mensaje("puntosCalculados",puntos);
-            
+            List<Dot> puntos
+                    = gestorElementosGraficos.calcularPuntosTablero(puntosTablero.get(0), puntosTablero.get(1), puntosTablero.get(2));
+            Mensaje mensajeRespuesta = new Mensaje("puntosCalculados", puntos);
+
             //Convertir json
             String respuestaJson = GSON.toJson(mensajeRespuesta);
             //envía a través del rabbit sender
             mensajeSender.enviarMensaje(respuestaJson);
-            
-        }*/
+
+        }
     }
-    
-    
-    
+
 }
