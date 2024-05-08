@@ -6,16 +6,14 @@ package GestorElementosGraficos;
 
 import Dominio.Box;
 import Dominio.Dot;
-import Dominio.Game;
 import Dominio.Line;
 import Dominio.Player;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import formato.Mensaje;
+import gestor.Gestor;
 import java.util.ArrayList;
 import java.util.List;
 import observador.IObservador;
+
 /**
  * Clase para representar el gestor de elementos gráficos dentro del proyecto
  * Timbiriche.
@@ -29,7 +27,7 @@ public class GestorElementosGraficos {
     List<Line> lineas = new ArrayList<>();
     List<Box> cuadrados = new ArrayList<>();
     //ProcesarEvento evento = new ProcesarEvento(this);
-    
+    gestor.Gestor gestor = new Gestor();
     List<Player> jugadores = new ArrayList<>();
     Double distanciaPuntos;
     private List<Dot> puntos;
@@ -44,11 +42,6 @@ public class GestorElementosGraficos {
      * @return Lista tipo Dot con todos los puntos almacenados.
      */
     public List<Dot> getPuntos() {
-    //Agregado
-    private Game game = Game.getInstance();
-    
-    
-        public List<Dot> getPuntos() {
         return puntos;
     }
 
@@ -309,7 +302,7 @@ public class GestorElementosGraficos {
         if (distancia.equals(distanciaPuntos)) {
 
             Line linea = acomodarCordenadas(new Line(puntoA, puntoB));
-            linea.setColor(jugadorPrincipal.getColor().toString());
+            linea.setColor(jugadorPrincipal.getColor());
             //this.gestor.enviarEvento(new Mensaje("linea", linea));
             return true;
         } else {
@@ -352,50 +345,3 @@ public class GestorElementosGraficos {
 
 
 
-        //Agregado
-         public void dibujarPuntos(Graphics g, List<Dot> puntos,
-            Dot puntoA, Dot puntoB) {
-        for (int i = 0; i < puntos.size(); i++) {
-            g.setColor(Color.WHITE);
-            int posicionX = puntos.get(i).getX();
-            int posicionY = puntos.get(i).getY();
-            if (puntoA != null
-                    && puntoA.equals(puntos.get(i))
-                    || puntoB != null
-                    && puntoB.equals(puntos.get(i))) {
-                g.setColor(Color.GREEN);
-            }
-            g.fillOval(posicionX, posicionY, 10, 10);
-        }
-    }
-
-    public void dibujarLineas(Graphics g, List<Line> lineas) {
-        if (lineas != null) {
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setStroke(new BasicStroke(5));
-            for (int i = 0; i < lineas.size(); i++) {
-                //g.setColor(lineas.get(i).getColor());
-                g.setColor(game.getPlayers().get(i).getColor());
-                Dot a = lineas.get(i).getStart();
-                Dot b = lineas.get(i).getEnd();
-                g.drawLine(a.getX() + 10 / 2,
-                        a.getY() + 10 / 2,
-                        b.getX() + 10 / 2,
-                        b.getY() + 10 / 2);
-            }
-        }
-    }
-
-    public void dibujarCuadrados(Graphics g, List<Box> cuadrados, int lado) {
-        if (cuadrados != null) {
-            for (int i = 0; i < cuadrados.size(); i++) {
-                //g.setColor(cuadrados.get(i).getColor());
-                g.setColor(game.getPlayers().get(i).getColor());
-                g.fillRect(cuadrados.get(i).getPointA().getX(),
-                        cuadrados.get(i).getPointA().getY(),
-                        lado + 10, lado + 10);
-            }
-        }
-    }
-    
-}

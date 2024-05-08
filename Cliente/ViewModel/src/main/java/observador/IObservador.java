@@ -6,10 +6,10 @@ package observador;
 
 /**
  *
- * @author salce
+ * @author Daniel Alameda
  */
-public interface IObservadorPantalla {
+public interface IObservador {
 
-    public void actualizarPantalla();
+    void procesarMensaje(String mensajeBody);
 }
 

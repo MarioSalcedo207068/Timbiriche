@@ -4,15 +4,8 @@
 
 package com.mycompany.viewmodel;
 
-import Dominio.Game;
-import ViewModel.viewModelLobbyEspera;
-import ViewModel.viewModelTablero;
-import ViewModel.viewModel_PantallaInicio;
 import ViewModel.viewModel_PantallaRegistro;
-import ViewModel.viewModel_PartidaNueva;
-import controlador.Controlador;
 import endpoint.MessageReceiver;
-import gestor.Gestor;
 
 /**
  *
@@ -22,27 +15,9 @@ public class ViewModel {
 
     public static void main(String[] args) {
         System.out.println("Iniciando jugador");
-        Game.getInstance();
-        Gestor.getInstance();
-
-        Controlador controlador = new Controlador();
-        MessageReceiver mensajeReceiver = new MessageReceiver(controlador);
-        mensajeReceiver.iniciarCOnsumidor();
-
-        viewModel_PantallaInicio viewModel_PantallaInicio = new viewModel_PantallaInicio();
-        viewModel_PartidaNueva viewModel_PartidaNueva = new viewModel_PartidaNueva();
-        //agregado
-        viewModelTablero viewModelTablero = new viewModelTablero();
-        //--Editado
-        //viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio);
-        viewModelLobbyEspera lobbyEspera = new viewModelLobbyEspera(viewModel_PantallaInicio, viewModelTablero);
+        MessageReceiver mensajeReceiver = new MessageReceiver();
+        new viewModel_PantallaRegistro().inciarPantalla();
         
-
-        controlador.agregarObservador(lobbyEspera);
-        controlador.agregarObservador(viewModelTablero);
-
-        viewModel_PantallaInicio.setLobbyEspera(lobbyEspera);
-        viewModel_PantallaInicio.setViewModel_PartidaNueva(viewModel_PartidaNueva);
-        new viewModel_PantallaRegistro(viewModel_PantallaInicio).inciarPantalla();
+        mensajeReceiver.iniciarCOnsumidor();
     }
 }

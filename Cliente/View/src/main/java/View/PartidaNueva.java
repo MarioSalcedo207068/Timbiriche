@@ -11,10 +11,6 @@ package View;
  */
 public class PartidaNueva extends javax.swing.JFrame {
 
-    
-        public PartidaNueva() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

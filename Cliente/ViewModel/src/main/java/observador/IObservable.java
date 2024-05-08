@@ -6,12 +6,12 @@ package observador;
 
 /**
  *
- * @author salce
+ * @author Daniel Alameda
  */
 public interface IObservable {
 
-    public void actualizarTodos();
+    public void actualizarTodos(String mensajeBody);
 
-    public void agregarObservador(IObservadorPantalla observador);
+    public void agregarObservador(IObservador observador);
 }
 
