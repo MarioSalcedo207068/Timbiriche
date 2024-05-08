@@ -62,6 +62,7 @@ public class PartidaNueva extends javax.swing.JFrame {
         btn10.setBackground(new java.awt.Color(153, 204, 255));
         btn10.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btn10.setText("10x10");
+        btn10.setActionCommand("10");
         btn10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn10ActionPerformed(evt);
@@ -71,10 +72,12 @@ public class PartidaNueva extends javax.swing.JFrame {
         btn20.setBackground(new java.awt.Color(153, 204, 255));
         btn20.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btn20.setText("20x20");
+        btn20.setActionCommand("20");
 
         btn30.setBackground(new java.awt.Color(153, 204, 255));
         btn30.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btn30.setText("30x30");
+        btn30.setActionCommand("30");
         btn30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn30ActionPerformed(evt);
@@ -84,6 +87,11 @@ public class PartidaNueva extends javax.swing.JFrame {
         btnStart.setBackground(new java.awt.Color(153, 204, 255));
         btnStart.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnStart.setText("Play");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("_______________");
 
@@ -193,6 +201,10 @@ public class PartidaNueva extends javax.swing.JFrame {
     private void btn30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn30ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn30ActionPerformed
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStartActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn10;

@@ -6,7 +6,6 @@ package ViewModel;
 
 import Dominio.Dot;
 import Dominio.Game;
-import View.Configuracion;
 import View.Tablero;
 import View.TableroPanel;
 import gestor.Gestor;
@@ -23,14 +22,15 @@ import observador.IObservadorPantalla;
 public class viewModelTablero implements ActionListener, IObservadorPantalla{
     
      Gestor gestor= Gestor.getInstance();
-     Tablero tablero;
+     Tablero tablero= new Tablero();
+     TableroPanel panelTablero;
      viewModelPanelTablero viewModelPanelTablero;
      viewModelConfiguracion viewModelConfiguracion;
      viewModelFinJuego viewModelFinJuego;
      Game game = Game.getInstance();
     
         public viewModelTablero() {
-            this.tablero = new Tablero();
+            //this.tablero = new Tablero();
     }
         
         public void agregarJugaresPantalla() {
@@ -67,8 +67,16 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
     }
     
     public void iniciarPantalla() {
+        panelTablero.setGame(game);
+        tablero.cargarTablero(panelTablero);
+        agregarJugaresPantalla();
         
         this.tablero.setVisible(true);
+        
+        tablero.panelPrincipal.repaint();
+    }
+    public void setPantallaTablero(TableroPanel panelTablero){
+        this.panelTablero= panelTablero;
     }
 
     public viewModelPanelTablero getViewModelPanelTablero() {
@@ -103,8 +111,18 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
         @Override
     public void actualizarPantalla() {
         agregarJugaresPantalla();
+        panelTablero.setGame(game);
+        tablero.cargarTablero(panelTablero);
         tablero.repaint();
+        panelTablero.repaint();
+        tablero.panelPrincipal.repaint();
     }
+    
+        public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    
 /*    
     TableroPanel tableroPanel;
     Gestor gestor;
@@ -154,6 +172,7 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
         }
 
     }*/
+
 
 
 }
