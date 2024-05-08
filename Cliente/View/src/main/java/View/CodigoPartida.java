@@ -6,7 +6,7 @@ package View;
 
 /**
  *
- * @author salce
+ * @author Equipo 01
  */
 public class CodigoPartida extends javax.swing.JFrame {
 
