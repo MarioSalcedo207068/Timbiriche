@@ -28,7 +28,7 @@ public class viewModel_UnirsePartida implements ActionListener {
         this.gestor = gestor;
         this.pantallaInicio = new PantallaInicio();
 
-        this.viewModel_PartidaNueva = new viewModel_PartidaNueva();
+        this.viewModel_PartidaNueva = new viewModel_PartidaNueva(gestor);
 
     }
 
@@ -44,6 +44,7 @@ public class viewModel_UnirsePartida implements ActionListener {
     public void unirsePartida(Player jugador) {
 
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

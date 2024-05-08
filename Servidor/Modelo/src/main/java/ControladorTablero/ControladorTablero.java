@@ -4,6 +4,14 @@
  */
 package ControladorTablero;
 
+import Dominio.Board;
+import Dominio.Dot;
+import Dominio.Game;
+import Dominio.Line;
+import GestorElementosGraficos.GestorLinea;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase para representar el controlador de tablero dentro del proyecto
  * Timbiriche.

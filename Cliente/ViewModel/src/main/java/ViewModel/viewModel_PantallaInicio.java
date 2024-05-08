@@ -4,7 +4,6 @@
  */
 package ViewModel;
 
-import Dominio.Game;
 import View.PantallaInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +15,20 @@ import gestor.Gestor;
 
 public class viewModel_PantallaInicio implements ActionListener{
     
-    private Gestor gestor= Gestor.getInstance();
+    private Gestor gestor;
     private PantallaInicio pantallaInicio;
     private viewModel_PartidaNueva viewModel_PartidaNueva;
-    private viewModelLobbyEspera lobbyEspera;
-    Game game = Game.getInstance();
+    private viewModel_UnirsePartida viewModel_UnirsePartida;
     
-        public viewModel_PantallaInicio() {
-            
+        public viewModel_PantallaInicio(Gestor gestor) {
+        this.gestor = gestor;
+        
+/*        if (gestor != null && gestor.getJugadorPrincipal() != null) {
+            System.out.println(gestor.getJugadorPrincipal().getName());
+        } else {
+            // Maneja el caso en que gestor es null
+            System.out.println("Gestor es null");
+        }*/
         this.pantallaInicio = new PantallaInicio();
 
         this.pantallaInicio.btnNuevaPartida.addActionListener(this);
@@ -32,35 +37,20 @@ public class viewModel_PantallaInicio implements ActionListener{
     }
         
     public void iniciarPantalla() {
-        
+        this.viewModel_PartidaNueva = new viewModel_PartidaNueva(gestor);
+        this.viewModel_UnirsePartida = new viewModel_UnirsePartida(gestor);
         this.pantallaInicio.setVisible(true);
-    }
-    
-        public viewModel_PartidaNueva getViewModel_PartidaNueva() {
-        return viewModel_PartidaNueva;
-    }
-
-    public void setViewModel_PartidaNueva(viewModel_PartidaNueva viewModel_PartidaNueva) {
-        this.viewModel_PartidaNueva = viewModel_PartidaNueva;
-    }
-
-    public viewModelLobbyEspera getLobbyEspera() {
-        return lobbyEspera;
-    }
-
-    public void setLobbyEspera(viewModelLobbyEspera lobbyEspera) {
-        this.lobbyEspera = lobbyEspera;
     }
             
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.pantallaInicio.btnNuevaPartida) {
+                if (e.getSource() == this.pantallaInicio.btnNuevaPartida) {
             this.pantallaInicio.dispose();
             viewModel_PartidaNueva.iniciarPantalla();
         }
         if (e.getSource() == this.pantallaInicio.btnUnirse) {
             this.pantallaInicio.dispose();
-            lobbyEspera.iniciarPantalla();
+            viewModel_UnirsePartida.iniciarPantalla();
         }
     }
     

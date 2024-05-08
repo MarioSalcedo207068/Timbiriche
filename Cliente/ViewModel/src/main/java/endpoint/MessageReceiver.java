@@ -11,23 +11,19 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 import java.util.ArrayList;
 import java.util.List;
-import observador.IObservadorPantalla;
-import controlador.Controlador;
+import observador.IObservable;
+import observador.IObservador;
+
 
 /**
  *
  * @author salce
  */
-public class MessageReceiver {
+public class MessageReceiver implements IObservable {
 
     private final static String EXCHANGE_NAME = "exchange-jugadores";
-    private List<IObservadorPantalla> observadores = new ArrayList<>();
-    private Controlador controlador;
-    
-    public MessageReceiver(Controlador controlador){
-        this.controlador=controlador;
-    }
-    
+    private List<IObservador> observadores = new ArrayList<>();
+
     public void iniciarCOnsumidor() {
 
         ConnectionFactory factory = new ConnectionFactory();
@@ -50,7 +46,7 @@ public class MessageReceiver {
 
                 System.out.println(" [x] Recibido desde lado del Cliente: '" + message + "'");
                 // Implementa la lógica para procesar el mensaje aquí
-                this.controlador.procesarMensaje(message);
+                actualizarTodos(message);
             };
 
             channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
@@ -59,4 +55,19 @@ public class MessageReceiver {
         }
 
     }
+
+    @Override
+    public void actualizarTodos(String mensajeBody) {
+        System.out.println("hola desde actualizar");
+        for (IObservador observador : observadores) {
+            observador.procesarMensaje(mensajeBody);
+        }
+    }
+
+    @Override
+    public void agregarObservador(IObservador observador) {
+        System.out.println("hola desde agregar");
+        this.observadores.add(observador);
+    }
+
 }

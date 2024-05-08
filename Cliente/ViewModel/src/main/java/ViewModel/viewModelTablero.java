@@ -5,7 +5,6 @@
 package ViewModel;
 
 import Dominio.Dot;
-import Dominio.Game;
 import View.Configuracion;
 import View.Tablero;
 import View.TableroPanel;
@@ -14,101 +13,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
-import observador.IObservadorPantalla;
+import observador.IObservador;
 
 /**
  *
  * @author salce
  */
-public class viewModelTablero implements ActionListener, IObservadorPantalla{
-    
-     Gestor gestor= Gestor.getInstance();
-     Tablero tablero;
-     viewModelPanelTablero viewModelPanelTablero;
-     viewModelConfiguracion viewModelConfiguracion;
-     viewModelFinJuego viewModelFinJuego;
-     Game game = Game.getInstance();
-    
-        public viewModelTablero() {
-            this.tablero = new Tablero();
-    }
-        
-        public void agregarJugaresPantalla() {
-        if (!game.getPlayers().isEmpty()) {
-            if (game.getPlayers().size() >= 1 && game.getPlayers().get(0) != null) {
-                tablero.txtPlayer1.setText(game.getPlayers().get(0).getName());
-                tablero.txtPlayer1.setForeground(game.getPlayers().get(0).getColor());
-                tablero.colorPlayer1.setOpaque(true);
-                tablero.colorPlayer1.setBackground(game.getPlayers().get(0).getColor());
-            }
-            if (game.getPlayers().size() >= 2 && game.getPlayers().get(1) != null) {
-                tablero.txtPlayer2.setText(game.getPlayers().get(1).getName());
-                tablero.txtPlayer2.setForeground(game.getPlayers().get(1).getColor());
-                tablero.colorPlayer2.setOpaque(true);
-                tablero.colorPlayer2.setBackground(game.getPlayers().get(1).getColor());
-            }
+public class viewModelTablero {
 
-            if (game.getPlayers().size() >= 3 && game.getPlayers().get(2) != null) {
-                tablero.txtPlayer3.setText(game.getPlayers().get(2).getName());
-                tablero.txtPlayer3.setForeground(game.getPlayers().get(2).getColor());
-                tablero.colorPlayer3.setOpaque(true);
-                tablero.colorPlayer3.setBackground(game.getPlayers().get(2).getColor());
-            }
-
-            if (game.getPlayers().size() >= 4 && game.getPlayers().get(3) != null) {
-                tablero.txtPlayer4.setText(game.getPlayers().get(3).getName());
-                tablero.txtPlayer4.setForeground(game.getPlayers().get(3).getColor());
-                tablero.colorPlayer4.setOpaque(true);
-                tablero.colorPlayer4.setBackground(game.getPlayers().get(3).getColor());
-            }
-
-        }
-
-    }
-    
-    public void iniciarPantalla() {
-        
-        this.tablero.setVisible(true);
-    }
-
-    public viewModelPanelTablero getViewModelPanelTablero() {
-        return viewModelPanelTablero;
-    }
-
-    public void setViewModelPanelTablero(viewModelPanelTablero viewModelPanelTablero) {
-        this.viewModelPanelTablero = viewModelPanelTablero;
-    }
-
-    public viewModelConfiguracion getViewModelConfiguracion() {
-        return viewModelConfiguracion;
-    }
-
-    public void setViewModelConfiguracion(viewModelConfiguracion viewModelConfiguracion) {
-        this.viewModelConfiguracion = viewModelConfiguracion;
-    }
-
-    public viewModelFinJuego getViewModelFinJuego() {
-        return viewModelFinJuego;
-    }
-
-    public void setViewModelFinJuego(viewModelFinJuego viewModelFinJuego) {
-        this.viewModelFinJuego = viewModelFinJuego;
-    }
-    
-        @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-        @Override
-    public void actualizarPantalla() {
-        agregarJugaresPantalla();
-        tablero.repaint();
-    }
-/*    
+/*    Tablero tablero;
+    Configuracion configuracion;
     TableroPanel tableroPanel;
     Gestor gestor;
-    
+    viewModelPanelTablero viewModelPanelTablero;
 
     public viewModelTablero(int numeroPuntos, Gestor gestor) {
         this.tablero = new Tablero(gestor);
@@ -121,7 +38,7 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
         this.tableroPanel.cargarInformacion(gestor);
         this.configuracion = new Configuracion();
 
-        gestor.agregarObservador((IObservadorPantalla) tableroPanel);
+        gestor.agregarObservador((IObservador) tableroPanel);
 
         this.viewModelPanelTablero = new viewModelPanelTablero(tablero,
                 tableroPanel, gestor);
@@ -154,6 +71,5 @@ public class viewModelTablero implements ActionListener, IObservadorPantalla{
         }
 
     }*/
-
 
 }
