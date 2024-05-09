@@ -94,8 +94,9 @@ public class TableroPanel extends javax.swing.JPanel {
     }
 
     private void dibujarPuntos(Graphics g) {
-        gestor.dibujarPuntos(g, game.getBoard().getDots(),
-                game.getBoard().getDots().getFirst(),game.getBoard().getDots().getLast());
+        
+//        gestor.dibujarPuntos(g, game.getBoard().getDots(),
+//                game.getBoard().getDots().getFirst(),game.getBoard().getDots().getLast());
         //getPuntoA(), getPuntoB());
 
     }
